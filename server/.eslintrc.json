@@ -1,0 +1,19 @@
+{
+    "env": {
+        "module": true,
+        "es2021": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "overrides": [],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "trailingComma": "es5",
+        "useTabs": false,
+        "tabWidth": 4,
+        "semi": 1,
+        "singleQuote": true
+    }
+}

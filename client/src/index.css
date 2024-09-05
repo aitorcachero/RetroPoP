@@ -1,0 +1,12 @@
+body {
+    display: grid;
+    place-items: center;
+    flex-direction: column;
+    background: rgb(45, 29, 58);
+    background: linear-gradient(
+        90deg,
+        rgba(45, 29, 58, 1) 0%,
+        rgba(49, 114, 118, 1) 50%,
+        rgba(47, 28, 56, 1) 100%
+    );
+}
