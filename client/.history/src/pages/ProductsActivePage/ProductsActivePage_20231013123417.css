@@ -1,0 +1,40 @@
+.list-products-active {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: end;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.title-active {
+    font-size: 2rem;
+    font-weight: 600;
+    color: white;
+    margin: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+.list-products__container-active {
+    display: flex;
+    justify-content: end;
+    padding: 0;
+    margin: 0;
+    margin-right: 10rem;
+    width: 70%;
+}
+
+.list-products__list-active {
+    gap: 1rem;
+    list-style: none;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
