@@ -100,15 +100,13 @@ const ProductEditForm = ({ id }) => {
     };
     // Renderizado del formulario y elementos de la interfaz del usuario
     return (
-        <div className="product-create-form-container w-full p-4">
+        <div className="product-create-form-container w-full">
             <form
-                className="flex flex-col justify-center items-center gap-4 p-6 mt-10 bg-slate-900 shadow-xl shadow-black border border-slate-700 md:px-20 text-xs md:text-base"
+                className="flex flex-col justify-center items-center gap-4 p-6 mt-10 bg-slate-900 shadow-xl shadow-black border border-slate-700 md:px-20"
                 onSubmit={handleProductCreate}
             >
                 <header className="title-upload-product">
-                    <h2 className="title-upload text-xl font-bold">
-                        Edita tu producto
-                    </h2>
+                    <h2 className="title-upload">Edita tu producto</h2>
                 </header>
                 <div className="body-form-main">
                     <section className="product-create-form__left">

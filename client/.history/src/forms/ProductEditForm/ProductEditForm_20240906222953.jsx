@@ -106,9 +106,7 @@ const ProductEditForm = ({ id }) => {
                 onSubmit={handleProductCreate}
             >
                 <header className="title-upload-product">
-                    <h2 className="title-upload text-xl font-bold">
-                        Edita tu producto
-                    </h2>
+                    <h2 className="title-upload">Edita tu producto</h2>
                 </header>
                 <div className="body-form-main">
                     <section className="product-create-form__left">

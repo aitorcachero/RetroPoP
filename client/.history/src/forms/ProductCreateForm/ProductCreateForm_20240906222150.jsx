@@ -1,32 +1,25 @@
-import './ProductEditForm.css';
+import './ProductCreateForm.css';
 
 // importamos los hooks necesarios
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useProducts } from '../../hooks/useProducts';
 
 // importamos funciones utilitarias que permite previsualizar y eliminar una imagen.
 import { handleAddFilePreview } from '../../utils/handleAddFilePreview.js';
-//REmove para terminar si da tiempo (ver fichero en utils)
 
-import { getProductByIdService } from '../../services/fetchData.js';
-
-import { useNavigate } from 'react-router-dom';
-import { APIUrl } from '../../config';
-import { decimalsRegex } from '../../utils/regex.js';
-
-import PropTypes from 'prop-types';
+// importamos el componente toast de la librería react-toastify
+import { toast } from 'react-toastify';
 
 // Definición del componente ProductCreateForm.
-const ProductEditForm = ({ id }) => {
+const ProductCreateForm = () => {
     const fileInputRef = useRef(null);
 
     // Importa la función addProduct del hook useProducts
-    const { editProduct } = useProducts();
+    const { addProduct } = useProducts();
 
     // Utilización de useState para definir varios estados del componente
 
-    const [img, setImg] = useState(null);
-    const [imgTemp, setImgTemp] = useState(null);
+    const [img, setImg] = useState(null); // almacena la imagen
     const [productName, setProductName] = useState('');
     const [description, setDescription] = useState(''); // almacena el contenido
     const [category, setCategory] = useState('');
@@ -37,50 +30,37 @@ const ProductEditForm = ({ id }) => {
     const [previewUrl, setPreviewUrl] = useState(''); // Almacena la url de la previsualización de la imagen
     const [loading, setLoading] = useState(false); // indica si el formulario se esta procesando enviando datos
 
-    const navigate = useNavigate();
-
+    // Función que crea un producto
     // Esta función se encarga de crear un producto cuando se envía el formulario.
-
-    useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                setLoading(true);
-                const body = await getProductByIdService(id);
-                setProductName(body.data.productName);
-                setDescription(body.data.description);
-                setCategory(body.data.category);
-                setState(body.data.state);
-                setPlace(body.data.place);
-                setPrice(body.data.price);
-                setImgTemp(body.data.image);
-                setLoading(false);
-                console.log('esto es el bodyyyyy', body);
-            } catch (err) {
-                console.log(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchProduct();
-    }, [id]);
 
     const onChangeImg = (e) => {
         setImg(e.target.value);
         handleAddFilePreview(e, setFile, setPreviewUrl);
     };
 
-    const handleCancelSubmit = (e) => {
+    const handleClearFields = (e) => {
         e.preventDefault();
-        navigate(`/product/${id}`);
+        setProductName('');
+        setDescription('');
+        setCategory('');
+        setState('');
+        setPlace('');
+        setPrice('');
+        setFile(null);
+        setPreviewUrl('');
+        setImg(null);
     };
 
     const handleProductCreate = async (e) => {
         e.preventDefault();
+        if (!img)
+            return toast.error('Tienes que adjuntar una imagen del producto');
         // try {
         setLoading(true);
 
         // Creamos un objeto FormData y establecemos sus propiedades. Adjuntamos los estados al formData
         // con append agregamos un nuevo campo y su valor al objeto fromData
+
         const formData = new FormData();
 
         formData.append('productName', productName);
@@ -89,33 +69,30 @@ const ProductEditForm = ({ id }) => {
         formData.append('state', state);
         formData.append('place', place);
         formData.append('price', price);
-        formData.append('originalImg', imgTemp);
-        formData.append('productId', id);
 
         // Si existe una imagen la asignamos también.
         if (file) formData.append('image', file);
-        navigate(`/`);
 
-        editProduct(formData, id);
+        addProduct(formData);
     };
     // Renderizado del formulario y elementos de la interfaz del usuario
     return (
-        <div className="product-create-form-container w-full p-4">
+        <div className="product-create-form-container">
             <form
-                className="flex flex-col justify-center items-center gap-4 p-6 mt-10 bg-slate-900 shadow-xl shadow-black border border-slate-700 md:px-20 text-xs md:text-base"
+                className="flex flex-col justify-center items-center gap-4 p-6 mt-10 bg-slate-900 shadow-xl shadow-black border border-slate-700 md:px-20"
                 onSubmit={handleProductCreate}
             >
                 <header className="title-upload-product">
-                    <h2 className="title-upload text-xl font-bold">
-                        Edita tu producto
+                    <h2 className="title-upload font-bold text-4xl">
+                        Sube tu producto
                     </h2>
                 </header>
-                <div className="body-form-main">
-                    <section className="product-create-form__left">
+                <div className="flex flex-row justify-between text-xs md:text-base md: gap-10 ">
+                    <section className="product-create-form__left text-start">
                         <h4 className="product-create-form__title">
                             Nombre del producto
                         </h4>
-                        <h4 className="product-create-form__title">
+                        <h4 className="product-create-form__title ">
                             Categoría
                         </h4>
                         <h4 className="product-create-form__title">Estado</h4>
@@ -126,7 +103,7 @@ const ProductEditForm = ({ id }) => {
                     </section>
                     <main className="product-create-form__main">
                         <input
-                            className="rounded-lg p-2 outline-none w-full md:w-[250px] text-center"
+                            className="rounded-lg p-2 outline-none w-full  md:w-[250px]"
                             type="text"
                             value={productName}
                             onChange={(e) => setProductName(e.target.value)}
@@ -139,7 +116,7 @@ const ProductEditForm = ({ id }) => {
                         <div className="select-container">
                             {/* <label htmlFor="category-select">Categoría:</label> */}
                             <select
-                                className="rounded-lg p-2 outline-none w-full md:w-[250px] text-center"
+                                className="rounded-lg p-2 outline-none w-full md:w-[250px]"
                                 id="category-select"
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
@@ -166,7 +143,7 @@ const ProductEditForm = ({ id }) => {
                             </select>
                         </div>
                         <select
-                            className="rounded-lg p-2 outline-none w-full md:w-[250px] text-center"
+                            className="rounded-lg p-2 outline-none w-full md:w-[250px]"
                             id="state-select"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
@@ -186,7 +163,7 @@ const ProductEditForm = ({ id }) => {
                             <option value="No funciona">No funciona</option>
                         </select>
                         <input
-                            className="input-place-upload"
+                            className="rounded-lg p-2 outline-none w-full md:w-[250px]"
                             type="text"
                             value={place}
                             maxLength="30"
@@ -195,19 +172,19 @@ const ProductEditForm = ({ id }) => {
                             required
                         />
                         <input
-                            className="rounded-lg p-2 outline-none w-full md:w-[250px] text-center"
                             type="number"
-                            step="0.01"
                             value={price}
+                            step="0.01"
                             onChange={(e) => setPrice(e.target.value)}
                             min="0"
                             placeholder="Precio"
                             required
+                            className="rounded-lg p-2 outline-none w-full md:w-[250px]"
                         />
                     </main>
                 </div>
 
-                <section className="product-create-form__section_description">
+                <section className="w-full">
                     <textarea
                         className="w-full min-h-24 outline-none rounded resize-none p-2"
                         value={description}
@@ -218,12 +195,7 @@ const ProductEditForm = ({ id }) => {
                         placeholder="Descripción"
                     />
                 </section>
-                <div className="img-prev-container">
-                    <img
-                        src={`${APIUrl}/images/${imgTemp}`}
-                        className="imgTemp"
-                    />
-                    <img src="/icons/arrow-right.png" className="row" />
+                <div className="img-prev-container-create">
                     {previewUrl && (
                         <img
                             className="img-product"
@@ -240,6 +212,7 @@ const ProductEditForm = ({ id }) => {
                             >
                                 <span className="span-img">
                                     <img
+                                        className="img-upload"
                                         src="/icons/folder.png"
                                         alt="upload"
                                         width="150"
@@ -264,9 +237,9 @@ const ProductEditForm = ({ id }) => {
                 <footer className="product-create-form__footer">
                     <button
                         className="clear-fields btn-product-upload"
-                        onClick={handleCancelSubmit}
+                        onClick={handleClearFields}
                     >
-                        Cancelar
+                        Borrar
                     </button>
                     <button
                         className="submit-btn btn-product-upload"
@@ -281,10 +254,4 @@ const ProductEditForm = ({ id }) => {
 };
 
 // Exportación del componente ProductCreateForm
-export default ProductEditForm;
-
-// Props validation
-
-ProductEditForm.propTypes = {
-    id: PropTypes.number,
-};
+export default ProductCreateForm;

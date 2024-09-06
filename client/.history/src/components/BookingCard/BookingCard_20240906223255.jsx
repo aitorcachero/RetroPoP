@@ -48,7 +48,7 @@ export default function BookingCard({ booking }) {
     };
 
     return (
-        <div className="booking-container bg-slate-900 border border-slate-600">
+        <div className="booking-container bg-slate-900">
             <img
                 src={`${APIUrl}/images/${booking.image}`}
                 alt=""

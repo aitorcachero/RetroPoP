@@ -100,15 +100,13 @@ const ProductEditForm = ({ id }) => {
     };
     // Renderizado del formulario y elementos de la interfaz del usuario
     return (
-        <div className="product-create-form-container w-full p-4">
+        <div className="product-create-form-container w-full">
             <form
-                className="flex flex-col justify-center items-center gap-4 p-6 mt-10 bg-slate-900 shadow-xl shadow-black border border-slate-700 md:px-20 text-xs md:text-base"
+                className="flex flex-col justify-center items-center gap-4 p-6 mt-10 bg-slate-900 shadow-xl shadow-black border border-slate-700 md:px-20"
                 onSubmit={handleProductCreate}
             >
                 <header className="title-upload-product">
-                    <h2 className="title-upload text-xl font-bold">
-                        Edita tu producto
-                    </h2>
+                    <h2 className="title-upload">Edita tu producto</h2>
                 </header>
                 <div className="body-form-main">
                     <section className="product-create-form__left">
@@ -126,7 +124,7 @@ const ProductEditForm = ({ id }) => {
                     </section>
                     <main className="product-create-form__main">
                         <input
-                            className="rounded-lg p-2 outline-none w-full md:w-[250px] text-center"
+                            className="input-place-upload"
                             type="text"
                             value={productName}
                             onChange={(e) => setProductName(e.target.value)}
@@ -139,7 +137,7 @@ const ProductEditForm = ({ id }) => {
                         <div className="select-container">
                             {/* <label htmlFor="category-select">Categoría:</label> */}
                             <select
-                                className="rounded-lg p-2 outline-none w-full md:w-[250px] text-center"
+                                className="select-category"
                                 id="category-select"
                                 value={category}
                                 onChange={(e) => setCategory(e.target.value)}
@@ -166,7 +164,7 @@ const ProductEditForm = ({ id }) => {
                             </select>
                         </div>
                         <select
-                            className="rounded-lg p-2 outline-none w-full md:w-[250px] text-center"
+                            className="select-category"
                             id="state-select"
                             value={state}
                             onChange={(e) => setState(e.target.value)}
@@ -195,7 +193,6 @@ const ProductEditForm = ({ id }) => {
                             required
                         />
                         <input
-                            className="rounded-lg p-2 outline-none w-full md:w-[250px] text-center"
                             type="number"
                             step="0.01"
                             value={price}
@@ -209,7 +206,7 @@ const ProductEditForm = ({ id }) => {
 
                 <section className="product-create-form__section_description">
                     <textarea
-                        className="w-full min-h-24 outline-none rounded resize-none p-2"
+                        className="product-create-form__description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         maxLength="200"

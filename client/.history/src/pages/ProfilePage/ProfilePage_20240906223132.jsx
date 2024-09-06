@@ -152,7 +152,7 @@ export default function ProfilePage() {
                                 </h4>
                                 <input
                                     type="text"
-                                    className="rounded-lg h-12 border  text-center w-full md:w-96 bg-slate-800 border-slate-600 "
+                                    className="rounded-lg h-12 border border-black text-center w-full md:w-96 bg-slate-800 "
                                     value={username && username}
                                     disabled
                                 />
@@ -163,7 +163,7 @@ export default function ProfilePage() {
                                 </h4>
                                 <input
                                     type="text"
-                                    className="rounded-lg h-12 border w-full md:w-96 border-slate-600 text-center bg-slate-800"
+                                    className="rounded-lg h-12 border w-full md:w-96 border-black text-center bg-slate-800"
                                     value={email && email}
                                     disabled
                                 />
@@ -176,7 +176,7 @@ export default function ProfilePage() {
                                 <textarea
                                     onChange={(e) => setBio(e.target.value)}
                                     value={bio && bio}
-                                    className="profile-body-bio-input w-full bg-slate-700 border-slate-600"
+                                    className="profile-body-bio-input w-full bg-slate-700"
                                     rows="5"
                                 ></textarea>
                             </div>
