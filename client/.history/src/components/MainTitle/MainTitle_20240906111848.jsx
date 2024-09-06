@@ -2,7 +2,7 @@ import './MainTitle.css';
 
 export default function MainTitle() {
     return (
-        <article className="flex flex-col justify-center items-center h-[150px]  gap-10">
+        <article className="flex flex-col justify-center items-center h-[150px] md:m-20 gap-10">
             <h2 className="main-title text-4xl md:text-[4rem]">
                 EL FUTURO DE AYER{' '}
             </h2>

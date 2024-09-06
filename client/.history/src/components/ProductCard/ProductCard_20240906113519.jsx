@@ -18,14 +18,12 @@ export default function ProductCard({ image, productName, price, fav }) {
                     />
                 </div>
                 <main className="product-card__main">
-                    <h3 className="product-card__name text-xl">
+                    <h3 className="product-card__name text-2xl">
                         {productName}
                     </h3>
                 </main>
-                <footer className="product-card__footer text-center w-full">
-                    <p className="product-card__price text-center text-orange-500 font-extrabold">
-                        {price}€
-                    </p>
+                <footer className="product-card__footer text-center">
+                    <p className="product-card__price text-center">{price}€</p>
                     {authUser && (
                         <img
                             className="product-card__button"

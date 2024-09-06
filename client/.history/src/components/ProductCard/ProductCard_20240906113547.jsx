@@ -22,7 +22,7 @@ export default function ProductCard({ image, productName, price, fav }) {
                         {productName}
                     </h3>
                 </main>
-                <footer className="product-card__footer text-center w-full">
+                <footer className="product-card__footer text-center">
                     <p className="product-card__price text-center text-orange-500 font-extrabold">
                         {price}€
                     </p>

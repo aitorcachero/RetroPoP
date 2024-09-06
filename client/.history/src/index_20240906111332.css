@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-} */
+    margin-top: 20;
+}
 
 body {
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    /* min-height: 100vh; */
+    min-height: 100vh;
     background-image: url('/bg-retropop.png');
     background-repeat: no-repeat;
     background-size: cover;

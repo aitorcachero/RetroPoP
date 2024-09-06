@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    display: grid;
+    place-items: center;
+    flex-direction: column;
+    width: 100%;
+    background-image: url('/bg-retropop.png');
+}
+
+#root {
+    width: 100%;
+}

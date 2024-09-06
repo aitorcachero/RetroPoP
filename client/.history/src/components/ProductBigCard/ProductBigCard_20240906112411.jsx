@@ -105,9 +105,11 @@ export default function ProductBigCard({ product }) {
         navigate(`/product/edit/${product.id}`);
     };
 
+    console.log('', product.id);
+
     return (
         <div className="product-big-card p-4">
-            <article className="product-page p-4  md:p-10 my-4 md:min-w-[800px]">
+            <article className="product-page p-4  md:p-10 my-32 md:min-w-[800px]">
                 <header className="w-full">
                     <div className="product-page__header__user">
                         <div className="product-page__header__user__name">

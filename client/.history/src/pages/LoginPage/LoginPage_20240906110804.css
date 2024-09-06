@@ -2,11 +2,10 @@
 
 .container-login {
     width: 100%;
-    /* height: 100vh; */
+    height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    /* margin-top: 15rem; */
+    margin-top: 15rem;
     /* align-items: center; */
 }
 
@@ -16,7 +15,7 @@
 }
 
 .wrapper {
-    margin-top: 10rem;
+    margin-top: -6rem;
     position: relative;
     width: 500px;
     height: 500px;

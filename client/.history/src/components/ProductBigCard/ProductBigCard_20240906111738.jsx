@@ -105,9 +105,11 @@ export default function ProductBigCard({ product }) {
         navigate(`/product/edit/${product.id}`);
     };
 
+    console.log('', product.id);
+
     return (
         <div className="product-big-card p-4">
-            <article className="product-page p-4  md:p-10 my-4 md:min-w-[800px]">
+            <article className="product-page p-4  md:p-10">
                 <header className="w-full">
                     <div className="product-page__header__user">
                         <div className="product-page__header__user__name">
@@ -182,7 +184,7 @@ export default function ProductBigCard({ product }) {
                 </div>
                 <div className="text-sm flex flex-col gap-4 m-2">
                     <div className="flex flex-row justify-center items-center">
-                        <h2 className="text-blue-500 text-center font-bold text-lg md:text-xl">
+                        <h2 className="text-blue-500 text-center md:text-xl">
                             {product?.productName}
                         </h2>
                     </div>
@@ -191,7 +193,7 @@ export default function ProductBigCard({ product }) {
                             {product?.description}
                         </p>
                     </div>
-                    <h3 className="text-center text-blue-500 text-4xl font-extrabold ">
+                    <h3 className="text-center text-blue-500 text-4xl font-extrabold shadow shadow-black">
                         {product?.price}€
                     </h3>
                 </div>

@@ -114,26 +114,26 @@ export default function LoginPage() {
     return (
         <>
             <div className="container-login">
-                <div className="wrapper mt-40 relative w-[350px] h-[500px] md:w-[500px] md:h-[500px]">
+                <div className="mt-40 relative w-[350px] h-[350px] md:w-[500px] md:h-[500px]">
                     <div className="form-wrapper sign-up">
                         <form action="" onSubmit={registerSubmit}>
                             <h2>Registro</h2>
-                            <div className="input-group md:w-[320px] w-[220px]">
+                            <div className="input-group">
                                 <input type="text" required />
                                 <label htmlFor="">Usuario</label>
                             </div>
-                            <div className="input-group md:w-[320px] w-[220px]">
+                            <div className="input-group">
                                 <input type="text" required />
                                 <label htmlFor="">Email</label>
                             </div>
-                            <div className="input-group md:w-[320px] w-[220px]">
+                            <div className="input-group">
                                 <input
                                     type={passReg}
                                     onChange={(e) =>
                                         setPassRegLength(e.target.value.length)
                                     }
                                     required
-                                    className="input-pass-reg md:w-[320px] w-[220px]"
+                                    className="input-pass-reg"
                                 ></input>
                                 {passRegLength > 2 && (
                                     <img
@@ -146,7 +146,7 @@ export default function LoginPage() {
                                 )}
                                 <label htmlFor="">Contraseña</label>
                             </div>
-                            <div className="input-group md:w-[320px] w-[220px]">
+                            <div className="input-group">
                                 <input
                                     type={passRepeatReg}
                                     onChange={(e) =>
@@ -188,12 +188,12 @@ export default function LoginPage() {
                     <div className="form-wrapper sign-in">
                         <form action="" onSubmit={LoginSubmit}>
                             <h2>Login</h2>
-                            <div className="input-group md:w-[320px] w-[220px]">
+                            <div className="input-group">
                                 <input type="text" required />
 
                                 <label htmlFor="">Email</label>
                             </div>
-                            <div className="input-group md:w-[320px] w-[220px]">
+                            <div className="input-group">
                                 <input
                                     type={passLog}
                                     onChange={(e) =>

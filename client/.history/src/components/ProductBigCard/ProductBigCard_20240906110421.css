@@ -1,5 +1,17 @@
+body {
+    margin: 0;
+    display: flex;
+    max-height: 100%;
+    background-image: url('/bg-retropop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
 .product-big-card {
     width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,6 +23,8 @@
     justify-content: center;
     align-items: center;
     /* background-color: rgba(45, 29, 58, 1); */
+
+    margin-top: -15rem;
     background-color: rgb(45, 29, 58, 0.6);
     box-shadow: 0 3px 10px rgba(255, 255, 255, 0.8);
     border-radius: 20px;
