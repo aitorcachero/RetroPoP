@@ -1,0 +1,294 @@
+body {
+    margin: 0;
+    display: flex;
+    max-height: 100%;
+    background-image: url('/bg-retropop.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.product-big-card {
+    width: 100%;
+    height: 1080px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(45, 29, 58, 1); */
+
+    margin-top: -15rem;
+    background-color: rgb(45, 29, 58, 0.6);
+    box-shadow: 0 3px 10px rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+}
+.product-page__header {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 120px;
+    /* border: 1px solid black; */
+}
+
+.product-page__header__user {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid black; */
+}
+
+.product-page__header__user__name {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+    height: 50%;
+    /* border: 1px solid black; */
+}
+
+.product_page_avatar {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.product-delete__button {
+    position: absolute;
+    right: 0;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: 1px solid black;
+    color: white;
+    background-color: #b22222;
+    cursor: pointer;
+}
+
+.product-page__header__user__reviews {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
+    /* border: 1px solid black; */
+}
+
+.product-page__header__user__creation {
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    width: 100%;
+    height: 20%;
+    /* border: 1px solid black; */
+}
+
+.product-page__gallery {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+}
+
+.product-image {
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    height: 100%;
+    border: 1px solid rgb(247, 247, 247);
+}
+
+.product-page__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: justify;
+    width: 80%;
+    height: 200px;
+    /* border: 1px solid black; */
+}
+
+.product-page__info__name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 50px;
+    /* border: 1px solid black; */
+}
+
+.product-page__footer {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 15%;
+    /* border: 1px solid black; */
+}
+
+.product-page__footer__state {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+.h3-bigproduct {
+    color: #11d9c5;
+    margin: 0;
+}
+
+.h3-footer {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f23da0;
+    margin: 0;
+}
+
+.p-product {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.p-product-created {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.p-product-description {
+    display: inline-block;
+    width: 640px;
+
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    margin: 0;
+}
+
+.product-page__footer__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.product-page__footer__buttons__buy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    height: 50px;
+    border: 1px solid black;
+    background: rgb(242, 61, 160);
+    background: linear-gradient(to right, #11d9c5, #f23da0);
+    color: white;
+    cursor: pointer;
+    border: 1px solid white;
+    transition: 1s;
+}
+
+.product-page__footer__buttons__buy:hover {
+    background: #11d9c5;
+    background: linear-gradient(to right, #f23da0, #11d9c5);
+    transform: scale(1.1);
+}
+
+.product-page__footer__buttons__fav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    height: 50px;
+    border: 1px solid black;
+    background: rgb(242, 61, 160);
+    background: linear-gradient(to right, #11d9c5, #f23da0);
+    color: white;
+    cursor: pointer;
+    border: 1px solid white;
+    transition: 1s;
+}
+
+.product-page__footer__buttons__fav:hover {
+    background: #11d9c5;
+    background: linear-gradient(to right, #f23da0, #11d9c5);
+    transform: scale(1.1);
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.popup-p {
+    margin-bottom: 10px;
+}
+
+.popup-button {
+    margin: 5px;
+    padding: 10px 20px;
+    background: linear-gradient(to right, #11d9c5, #f23da0);
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.popup-button:hover {
+    background-color: #1a6dff;
+}
+
+.product-page__footer__buttons__fav__img {
+    width: 30px;
+    height: 30px;
+}
+
+.product-page__footer__buttons__edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    border-radius: 10px;
+    height: 50px;
+    border: 1px solid black;
+    background: rgb(242, 61, 160);
+    background: linear-gradient(to right, #11d9c5, #f23da0);
+    color: white;
+    cursor: pointer;
+    border: 1px solid white;
+    transition: 1s;
+}
+
+.product-page__footer__buttons__edit:hover {
+    background: #11d9c5;
+    background: linear-gradient(to right, #f23da0, #11d9c5);
+    transform: scale(1.1);
+}
