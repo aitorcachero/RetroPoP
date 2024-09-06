@@ -96,4 +96,4 @@ const footerSocialMedia = [
     },
 ];
 
-export { categoryNav, footerSocialMedia };
+export { categoryNav };

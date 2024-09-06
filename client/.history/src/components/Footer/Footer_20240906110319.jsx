@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer className="footer">
             <div className="left_side">
-                <div className="flex flex.row">
+                <div className="">
                     {footerSocialMedia.map((v, i) => (
                         <a
                             key={i}

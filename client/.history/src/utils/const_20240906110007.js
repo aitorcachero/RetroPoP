@@ -72,28 +72,28 @@ const footerSocialMedia = [
     {
         path: 'https://www.linkedin.com/groups/9509612/',
         img: '/icons/linkedin-icon.png',
-        alt: 'Linkedin link',
+        alt: 'Linkedin icon',
     },
     {
         path: 'https://github.com/FlorPManzano/RetroPoP',
         img: '/icons/github-icon.png',
-        alt: 'GitHub link',
+        alt: 'GitHub icon',
     },
     {
         path: 'https://www.instagram.com/',
         img: '/icons/instagram.png',
-        alt: 'Instagram link',
+        alt: 'Instagram icon',
     },
     {
-        path: 'https://www.facebook.com/',
-        img: '/icons/facebook.png',
-        alt: 'Facebook link',
+        path: 'https://www.linkedin.com/groups/9509612/',
+        img: '/icons/linkedin-icon.png',
+        alt: 'linkeding icon',
     },
     {
-        path: 'https://twitter.com/',
-        img: '/icons/twitter.png',
-        alt: 'Twitter link',
+        path: 'https://www.linkedin.com/groups/9509612/',
+        img: '/icons/linkedin-icon.png',
+        alt: 'linkeding icon',
     },
 ];
 
-export { categoryNav, footerSocialMedia };
+export { categoryNav };
