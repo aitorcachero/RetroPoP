@@ -99,7 +99,7 @@ export default function FilteredPage() {
     return (
         <>
             <div className=" flex flex-col md:flex-row md:gap-20 w-full mt-10">
-                <aside className="  h-auto p-4 md:p-0 md:w-[500px]">
+                <aside className="  h-auto px-4 md:w-[500px]">
                     <form
                         className="flex flex-col justify-center items-center rounded-xl bg-slate-900 border border-slate-600  md:ml-6 md:p-10 md:gap-10 h-auto py-4 gap-4 md:w-[500px]"
                         onSubmit={handleSubmit}
