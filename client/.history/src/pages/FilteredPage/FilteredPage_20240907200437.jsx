@@ -24,7 +24,7 @@ export default function FilteredPage() {
         actualPrice: 0,
         precioMax: 0,
         estado: 'all',
-        localidad: 'all',
+        localidad: '',
     });
     // const [filteredPrice, setFilteredPrices] = useState();
 
@@ -212,11 +212,8 @@ export default function FilteredPage() {
                                                 product.state ===
                                                     filters.estado) &&
                                             (filters.localidad === 'all' ||
-                                                product.place
-                                                    .toLowerCase()
-                                                    .includes(
-                                                        filters.localidad.toLowerCase()
-                                                    ))
+                                                product.place.toLowerCase() ===
+                                                    filters.localidad.toLowerCase())
                                     )
                                     .map((product) => (
                                         <li

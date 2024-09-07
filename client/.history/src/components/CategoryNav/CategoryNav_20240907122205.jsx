@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 export default function CategoryNav() {
     return (
         <>
-            <div className=" mb-10 md:mb-0 flex justify-center p-4">
+            <div className="  flex justify-center p-4">
                 <div className="category-nav__bundle ">
                     <section className="category-nav flex flex-1 flex-wrap md:flex-nowrap gap-2 p-2">
                         {categoryNav.map((item, i) => (

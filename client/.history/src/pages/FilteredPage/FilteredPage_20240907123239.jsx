@@ -9,43 +9,37 @@ import './FilteredPage.css';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { useNavigate, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth.js';
-import { buttonStyle, categorys, productsState } from '../../utils/const.js';
+import { buttonStyle } from '../../utils/const.js';
 
 export default function FilteredPage() {
     const { authUser } = useAuth();
 
+    const [maxPrice, setMaxPrice] = useState(); // [1
+    const [products, setProducts] = useState([]);
+    const [filteredPrice, setFilteredPrices] = useState();
+    const [valuePrice, setValuePrice] = useState(maxPrice); //
+    // const [params, setParams] = useState(''); //
+    // const [loading, setLoading] = useState(false); //
+
     const navigate = useNavigate();
     const name = useLocation().search;
-    const query = name.split('=').at(-1);
 
-    const [products, setProducts] = useState([]);
-    const [filters, setFilters] = useState({
-        categoria: useLocation().search,
-        actualPrice: 0,
-        precioMax: 0,
-        estado: 'all',
-        localidad: 'all',
-    });
-    // const [filteredPrice, setFilteredPrices] = useState();
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const body = await getAllProductsService();
+                const maxPrice = Math.ceil(
+                    body.data.sort((a, b) => b.price - a.price)[0].price
+                );
 
-    // useEffect(() => {
-    //     const fetchProducts = async () => {
-    //         try {
-    //             const body = await getAllProductsService();
-    //             const maxPrice = Math.ceil(
-    //                 body.data.sort((a, b) => b.price - a.price)[0].price
-    //             );
-
-    //             setMaxPrice(maxPrice);
-    //             setValuePrice(maxPrice);
-    //             setProducts(body.data);
-    //             console.log(products);
-    //         } catch (err) {
-    //             console.log(err.message);
-    //         }
-    //     };
-    //     fetchProducts();
-    // }, []);
+                setMaxPrice(maxPrice);
+                setValuePrice(maxPrice);
+            } catch (err) {
+                console.log(err.message);
+            }
+        };
+        fetchProducts();
+    }, []);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -56,27 +50,13 @@ export default function FilteredPage() {
                     results.status === 'ok' &&
                     results.data !== 'No hay ningún resultado con esos filtros'
                 ) {
-                    const deleteItemsSelledAndSelf = results.data.filter(
-                        (product) =>
-                            product.isSelled === 0 &&
-                            product.userId !== authUser?.id
-                    );
-                    console.log(deleteItemsSelledAndSelf);
-
-                    setProducts(deleteItemsSelledAndSelf);
-                    const maxPrice = deleteItemsSelledAndSelf.sort(
-                        (a, b) => b.price - a.price
-                    )[0].price;
-                    const updateFilter = { ...filters };
-                    updateFilter.actualPrice = Math.round(maxPrice);
-                    updateFilter.precioMax = Math.round(maxPrice);
-                    setFilters(updateFilter);
-
+                    setProducts(results.data);
+                    setFilteredPrices(results.data);
                     document.querySelector('.no-results').style.display =
                         'none';
                 } else {
                     setProducts([]);
-                    // setFilteredPrices([]);
+                    setFilteredPrices([]);
                     document.querySelector('.no-results').style.display =
                         'block';
                 }
@@ -87,31 +67,35 @@ export default function FilteredPage() {
         fetchProducts();
     }, [name]);
 
-    const handleUpdateRangeValue = (e) => {
-        const updateFilters = { ...filters };
-        updateFilters.actualPrice = Math.ceil(e.target.value);
-        setFilters(updateFilters);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const data = `?category=${e.target[0].value}&maxPrice=${e.target[1].value}&state=${e.target[2].value}&place=${e.target[3].value}`;
+
+        navigate(`/search/${data}`);
     };
 
-    const handleUpdateStateValue = (e) => {
-        const updateFilters = { ...filters };
-        updateFilters.estado = e.target.value;
-        setFilters(updateFilters);
+    const handleCardClick = async (e, key) => {
+        e.preventDefault();
+        navigate(`/product/${key}`);
     };
 
-    const handleUpdatePlaceValue = (e) => {
-        const updateFilters = { ...filters };
-        updateFilters.localidad = e.target.value;
-        setFilters(updateFilters);
+    const resetEventHandle = (e) => {
+        e.preventDefault();
+        document.querySelector('.select-category').value = '';
+        document.querySelector('.range-price').value = `${maxPrice}`;
+        document.querySelector(
+            '.range-price__text'
+        ).textContent = `${maxPrice}`;
+        document.querySelector('.select-state').value = '';
+        document.querySelector('.search-location').value = '';
+        setValuePrice(maxPrice);
     };
 
-    const handleCardClick = () => {};
-
-    const handleSubmit = () => {};
-
-    const handleChangeValuePrice = () => {};
-
-    const resetEventHandle = () => {};
+    const handleChangeValuePrice = (e) => {
+        setValuePrice(e.target.value);
+        // setFilteredPrices(products.filter((x) => x.price < e.target.value));
+    };
 
     return (
         <>
@@ -126,24 +110,25 @@ export default function FilteredPage() {
                             <select
                                 name="select"
                                 className="select-category w-full"
-                                onChange={(e) =>
-                                    navigate(
-                                        `/search/?category=${e.target.value}`
-                                    )
-                                }
                             >
                                 <option value="" defaultValue>
                                     Selecciona categoría
                                 </option>
-                                {categorys.map((v, i) => (
-                                    <option
-                                        key={i}
-                                        value={v.value}
-                                        selected={query === v.selectedValue}
-                                    >
-                                        {v.value}
-                                    </option>
-                                ))}
+                                <option value="Audio">Audio</option>
+                                <option value="Camaras de fotos">
+                                    Cámaras de fotos
+                                </option>
+                                <option value="Consolas">Consolas</option>
+                                <option value="Juguetes">Juguetes</option>
+                                <option value="Maquinas de escribir">
+                                    Máquinas de escribir
+                                </option>
+                                <option value="Ordenadores">Ordenadores</option>
+                                <option value="Relojes">Relojes</option>
+                                <option value="Telefonos">Teléfonos</option>
+                                <option value="Televisores">Televisores</option>
+                                <option value="Video">Video</option>
+                                <option value="Otros">Otros</option>
                             </select>
                         </section>
                         <section className="container-aside__section_price">
@@ -151,39 +136,41 @@ export default function FilteredPage() {
                             <input
                                 type="range"
                                 min="0"
-                                max={filters?.precioMax}
+                                max={maxPrice}
                                 step="1"
-                                value={filters?.actualPrice}
+                                value={valuePrice}
                                 className="range-price"
-                                onChange={handleUpdateRangeValue}
+                                onChange={handleChangeValuePrice}
                             />
                             <p className="range-price__text text-2xl text-slate-300 font-extrabold">
-                                {filters?.actualPrice} €
+                                {valuePrice} €
                             </p>
                         </section>
                         <div className="container-aside__state">
                             <h3 className="filter-h3">Estado del producto</h3>
                             <select
                                 name="select"
-                                className="outline-none rounded-xl p-2 w-full text-center"
-                                onChange={handleUpdateStateValue}
+                                className="outline-none rounded-xl p-2 w-full"
                             >
                                 <option value="" defaultValue>
                                     Selecciona estado
                                 </option>
-                                {productsState.map((v, i) => (
-                                    <option key={i} value={v}>
-                                        {v}
-                                    </option>
-                                ))}
+                                <option value="Nuevo">Nuevo</option>
+                                <option value="Como nuevo">Como nuevo</option>
+                                <option value="En buen estado">
+                                    En buen estado
+                                </option>
+                                <option value="En condiciones aceptables">
+                                    En condiciones aceptables
+                                </option>
+                                <option value="No funciona">No funciona</option>
                             </select>
                         </div>
                         <section className="container-aside__state">
                             <h3 className="filter-h3">Localidad</h3>
                             <input
                                 type="text"
-                                className="outline-none rounded-xl p-2 w-full text-center"
-                                onChange={handleUpdatePlaceValue}
+                                className="outline-none rounded-xl p-2 w-full"
                             />
                         </section>
                         <div className="container-aside__buttons w-full p-4">
@@ -201,22 +188,13 @@ export default function FilteredPage() {
                 </aside>
                 <main className="w-full justify-center items-center ">
                     <div className="w-full justify-center items-center">
-                        {products.length > 0 && (
+                        {filteredPrice && filteredPrice.length > 0 && (
                             <ul className="flex flex-wrap basis-2 gap-16 w-full justify-center">
-                                {[...products]
+                                {filteredPrice
                                     .filter(
                                         (product) =>
-                                            product.price <=
-                                                filters.actualPrice &&
-                                            (filters.estado === 'all' ||
-                                                product.state ===
-                                                    filters.estado) &&
-                                            (filters.localidad === 'all' ||
-                                                product.place
-                                                    .toLowerCase()
-                                                    .includes(
-                                                        filters.localidad.toLowerCase()
-                                                    ))
+                                            product.isSelled === 0 &&
+                                            product.userId !== authUser?.id
                                     )
                                     .map((product) => (
                                         <li

@@ -212,11 +212,8 @@ export default function FilteredPage() {
                                                 product.state ===
                                                     filters.estado) &&
                                             (filters.localidad === 'all' ||
-                                                product.place
-                                                    .toLowerCase()
-                                                    .includes(
-                                                        filters.localidad.toLowerCase()
-                                                    ))
+                                                product.place.toLowerCase() ===
+                                                    filters.localidad.toLowerCase())
                                     )
                                     .map((product) => (
                                         <li

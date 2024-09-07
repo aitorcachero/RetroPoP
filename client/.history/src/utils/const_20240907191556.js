@@ -186,6 +186,5 @@ export {
     footerSocialMedia,
     lateralBarProfile,
     categorys,
-    productsState,
     buttonStyle,
 };

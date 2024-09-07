@@ -24,7 +24,7 @@ export default function FilteredPage() {
         actualPrice: 0,
         precioMax: 0,
         estado: 'all',
-        localidad: 'all',
+        localidad: '',
     });
     // const [filteredPrice, setFilteredPrices] = useState();
 
@@ -61,7 +61,6 @@ export default function FilteredPage() {
                             product.isSelled === 0 &&
                             product.userId !== authUser?.id
                     );
-                    console.log(deleteItemsSelledAndSelf);
 
                     setProducts(deleteItemsSelledAndSelf);
                     const maxPrice = deleteItemsSelledAndSelf.sort(
@@ -99,11 +98,36 @@ export default function FilteredPage() {
         setFilters(updateFilters);
     };
 
-    const handleUpdatePlaceValue = (e) => {
-        const updateFilters = { ...filters };
-        updateFilters.localidad = e.target.value;
-        setFilters(updateFilters);
-    };
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     const data = `?category=${e.target[0].value}&maxPrice=${e.target[1].value}&state=${e.target[2].value}&place=${e.target[3].value}`;
+
+    //     navigate(`/search/${data}`);
+    // };
+
+    // const handleCardClick = async (e, key) => {
+    //     e.preventDefault();
+    //     navigate(`/product/${key}`);
+    // };
+
+    // const resetEventHandle = (e) => {
+    //     e.preventDefault();
+    //     document.querySelector('.select-category').value = '';
+    //     document.querySelector('.range-price').value = `${maxPrice}`;
+    //     document.querySelector(
+    //         '.range-price__text'
+    //     ).textContent = `${maxPrice}`;
+    //     document.querySelector('.select-state').value = '';
+    //     document.querySelector('.search-location').value = '';
+    //     setValuePrice(maxPrice);
+    // };
+
+    // const handleChangeValuePrice = (e) => {
+    //     setValuePrice(e.target.value);
+
+    //     // setFilteredPrices(products.filter((x) => x.price < e.target.value));
+    // };
 
     const handleCardClick = () => {};
 
@@ -112,6 +136,11 @@ export default function FilteredPage() {
     const handleChangeValuePrice = () => {};
 
     const resetEventHandle = () => {};
+    // const handleCategory = (e) => {
+    //     const newFilter = { ...filters };
+    //     newFilter.categoria = e.target.value;
+    //     setFilters(newFilter);
+    // };
 
     return (
         <>
@@ -183,7 +212,6 @@ export default function FilteredPage() {
                             <input
                                 type="text"
                                 className="outline-none rounded-xl p-2 w-full text-center"
-                                onChange={handleUpdatePlaceValue}
                             />
                         </section>
                         <div className="container-aside__buttons w-full p-4">
@@ -211,12 +239,9 @@ export default function FilteredPage() {
                                             (filters.estado === 'all' ||
                                                 product.state ===
                                                     filters.estado) &&
-                                            (filters.localidad === 'all' ||
-                                                product.place
-                                                    .toLowerCase()
-                                                    .includes(
-                                                        filters.localidad.toLowerCase()
-                                                    ))
+                                            (filters.localidad === '' ||
+                                                product.state ===
+                                                    filters.localidad)
                                     )
                                     .map((product) => (
                                         <li

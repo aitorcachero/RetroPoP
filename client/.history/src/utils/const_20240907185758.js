@@ -170,22 +170,7 @@ const categorys = [
     },
 ];
 
-const productsState = [
-    'Nuevo',
-    'Como nuevo',
-    'En buen estado',
-    'En condiciones aceptables',
-    'No funciona',
-];
-
 const buttonStyle =
     'rounded-lg bg-slate-800 cursor pointer text-white font-bold  md:p-4 border border-slate-600 hover:bg-slate-700 w-full min-h-12';
 
-export {
-    categoryNav,
-    footerSocialMedia,
-    lateralBarProfile,
-    categorys,
-    productsState,
-    buttonStyle,
-};
+export { categoryNav, footerSocialMedia, lateralBarProfile, buttonStyle };

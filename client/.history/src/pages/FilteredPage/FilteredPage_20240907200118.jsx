@@ -24,7 +24,7 @@ export default function FilteredPage() {
         actualPrice: 0,
         precioMax: 0,
         estado: 'all',
-        localidad: 'all',
+        localidad: '',
     });
     // const [filteredPrice, setFilteredPrices] = useState();
 
@@ -183,7 +183,6 @@ export default function FilteredPage() {
                             <input
                                 type="text"
                                 className="outline-none rounded-xl p-2 w-full text-center"
-                                onChange={handleUpdatePlaceValue}
                             />
                         </section>
                         <div className="container-aside__buttons w-full p-4">
@@ -211,12 +210,9 @@ export default function FilteredPage() {
                                             (filters.estado === 'all' ||
                                                 product.state ===
                                                     filters.estado) &&
-                                            (filters.localidad === 'all' ||
-                                                product.place
-                                                    .toLowerCase()
-                                                    .includes(
-                                                        filters.localidad.toLowerCase()
-                                                    ))
+                                            (filters.localidad === '' ||
+                                                product.place ===
+                                                    filters.localidad)
                                     )
                                     .map((product) => (
                                         <li

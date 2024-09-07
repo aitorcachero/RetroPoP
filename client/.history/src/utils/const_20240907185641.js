@@ -145,47 +145,20 @@ const categorys = [
         selectedValue: 'Maquinas%20de%20escribir',
     },
     {
-        value: 'Ordenadores',
-        selectedValue: 'Ordenadores',
+        value: Audio,
+        selectedValue: 'audio',
     },
     {
-        value: 'Relojes',
-        selectedValue: 'Relojes',
+        value: Audio,
+        selectedValue: 'audio',
     },
     {
-        value: 'Telefonos',
-        selectedValue: 'Telefonos',
+        value: Audio,
+        selectedValue: 'audio',
     },
-    {
-        value: 'Televisores',
-        selectedValue: 'Televisores',
-    },
-    {
-        value: 'Video',
-        selectedValue: 'Video',
-    },
-    {
-        value: 'Otros',
-        selectedValue: 'Otros',
-    },
-];
-
-const productsState = [
-    'Nuevo',
-    'Como nuevo',
-    'En buen estado',
-    'En condiciones aceptables',
-    'No funciona',
 ];
 
 const buttonStyle =
     'rounded-lg bg-slate-800 cursor pointer text-white font-bold  md:p-4 border border-slate-600 hover:bg-slate-700 w-full min-h-12';
 
-export {
-    categoryNav,
-    footerSocialMedia,
-    lateralBarProfile,
-    categorys,
-    productsState,
-    buttonStyle,
-};
+export { categoryNav, footerSocialMedia, lateralBarProfile, buttonStyle };
