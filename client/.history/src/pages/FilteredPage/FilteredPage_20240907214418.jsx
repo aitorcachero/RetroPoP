@@ -33,7 +33,27 @@ export default function FilteredPage() {
         precioMax: 0,
         estado: 'all',
         localidad: 'all',
-    });
+    };);
+    // const [filteredPrice, setFilteredPrices] = useState();
+
+    // useEffect(() => {
+    //     const fetchProducts = async () => {
+    //         try {
+    //             const body = await getAllProductsService();
+    //             const maxPrice = Math.ceil(
+    //                 body.data.sort((a, b) => b.price - a.price)[0].price
+    //             );
+
+    //             setMaxPrice(maxPrice);
+    //             setValuePrice(maxPrice);
+    //             setProducts(body.data);
+    //             console.log(products);
+    //         } catch (err) {
+    //             console.log(err.message);
+    //         }
+    //     };
+    //     fetchProducts();
+    // }, []);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -49,6 +69,7 @@ export default function FilteredPage() {
                             product.isSelled === 0 &&
                             product.userId !== authUser?.id
                     );
+                    console.log(deleteItemsSelledAndSelf);
 
                     setProducts(deleteItemsSelledAndSelf);
                     const maxPrice = deleteItemsSelledAndSelf.sort(
@@ -169,7 +190,7 @@ export default function FilteredPage() {
                                 onChange={handleUpdatePlaceValue}
                             />
                         </section>
-                        <div className="container-aside__state w-4/5 ">
+                        <div className="container-aside__buttons w-full p-4">
                             <button
                                 className={buttonStyle}
                                 onClick={() => setFilters(filterDefault)}

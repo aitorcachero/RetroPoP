@@ -169,7 +169,7 @@ export default function FilteredPage() {
                                 onChange={handleUpdatePlaceValue}
                             />
                         </section>
-                        <div className="container-aside__state w-4/5 ">
+                        <div className="container-aside__state w-4/5 p-4">
                             <button
                                 className={buttonStyle}
                                 onClick={() => setFilters(filterDefault)}

@@ -49,6 +49,7 @@ export default function FilteredPage() {
                             product.isSelled === 0 &&
                             product.userId !== authUser?.id
                     );
+                    console.log(deleteItemsSelledAndSelf);
 
                     setProducts(deleteItemsSelledAndSelf);
                     const maxPrice = deleteItemsSelledAndSelf.sort(
@@ -169,7 +170,7 @@ export default function FilteredPage() {
                                 onChange={handleUpdatePlaceValue}
                             />
                         </section>
-                        <div className="container-aside__state w-4/5 ">
+                        <div className="container-aside__buttons w-full p-4">
                             <button
                                 className={buttonStyle}
                                 onClick={() => setFilters(filterDefault)}
