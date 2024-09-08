@@ -13,7 +13,7 @@ const getProductModel = async (id) => {
             (SELECT AVG(r.starsRw) FROM reviews r, bookings b, products p WHERE p.userId = U.id AND p.id = b.productId AND b.id = r.bookingId) AS mediaStars
             FROM products P
             JOIN users U ON P.userId = U.id
-            WHERE P.id = ?`,
+            WHERE p.id = ?`,
             [id]
         );
 
