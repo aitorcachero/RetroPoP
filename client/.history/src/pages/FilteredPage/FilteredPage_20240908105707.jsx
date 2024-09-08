@@ -112,8 +112,8 @@ export default function FilteredPage() {
     return (
         <>
             <div className=" flex flex-col md:flex-row md:gap-20 w-full mt-10">
-                <aside className="  h-auto p-4 md:p-0 md:w-[500px]">
-                    <form className="flex flex-col justify-center items-center rounded-xl bg-slate-900 border border-slate-600  md:ml-6 md:p-10 md:gap-10 h-auto py-4 gap-4 md:w-[500px] shadow-xl shadow-black">
+                <aside className="  h-auto p-4 md:p-0 md:w-[500px] b">
+                    <form className="flex flex-col justify-center items-center rounded-xl bg-slate-900 border border-slate-600  md:ml-6 md:p-10 md:gap-10 h-auto py-4 gap-4 md:w-[500px]">
                         <section className="container-aside__section_category">
                             <h3 className="filter-h3">Categorias</h3>
                             <select
@@ -126,7 +126,7 @@ export default function FilteredPage() {
                                 }
                             >
                                 <option value="" defaultValue>
-                                    Todas las categorías
+                                    Selecciona categoría
                                 </option>
                                 {categorys.map((v, i) => (
                                     <option
@@ -150,7 +150,7 @@ export default function FilteredPage() {
                                 className="range-price"
                                 onChange={handleUpdateRangeValue}
                             />
-                            <p className="range-price__text text-4xl text-slate-300 font-bold">
+                            <p className="range-price__text text-2xl text-slate-300 font-extrabold">
                                 {filters?.actualPrice} €
                             </p>
                         </section>
@@ -162,7 +162,7 @@ export default function FilteredPage() {
                                 onChange={handleUpdateStateValue}
                             >
                                 <option value="all" defaultValue>
-                                    Cualquier estado
+                                    Selecciona estado
                                 </option>
                                 {productsState.map((v, i) => (
                                     <option key={i} value={v}>

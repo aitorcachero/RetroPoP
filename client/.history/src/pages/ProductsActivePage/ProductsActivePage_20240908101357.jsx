@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { getAllProductsService } from '../../services/fetchData';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import './ProductsActivePage.css';
 import ProductCardProfile from '../../components/ProductCardProfile/ProductCardProfile';
 
-export default function ProductsSelledPage() {
+export default function ProductsActivePage() {
     const { authUser } = useAuth();
 
     const [products, setProducts] = useState([]);
@@ -37,16 +38,16 @@ export default function ProductsSelledPage() {
             <div className="w-full h-12">
                 <LateralBar />
             </div>
-            <h2 className="title-active font-extrabold text-2xl md:text-6xl text-slate-300 border-y border-slate-600 bg-slate-900 p-4">
-                Productos vendidos
+            <h2 className="title-active font-extrabold text-6xl text-slate-300 border-x border-slate-600 bg-slate-900 p-4">
+                Productos en venta
             </h2>
             <div className="list-products__container-active w-full">
-                <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center mb-20">
+                <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center">
                     {products &&
                         products
                             .filter(
                                 (product) =>
-                                    product.isSelled === 1 &&
+                                    product.isSelled === 0 &&
                                     product.userId === authUser?.id
                             )
                             .map((product) => (

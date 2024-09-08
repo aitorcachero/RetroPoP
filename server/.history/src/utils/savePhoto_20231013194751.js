@@ -3,18 +3,18 @@ import fs from 'fs/promises';
 import url from 'url';
 import path from 'path';
 import sharp from 'sharp';
+import { v4 } from 'uuid';
 
 // Importamos la constante que contiene el nombre del directorio de subida de archivos.
 import { UPLOADS_DIR } from '../../config.js';
-// import webpConvert from './webpConvert.js';
-import deletePhoto from './deletePhoto.js';
 
 // Importamos las funciones de error.
+import { saveFileError } from '../errors/errorService.js';
 
 // Función que se encargará de guardar una imagen en el disco en la cuál recibe tres parametros.
 // 1. La imagen. 2. El ancho de la imagen. 3. El nombre de la carpeta en la que se guardará la imagen (Solo puede ser "avatars" para el avatar de los perfiles o "images" para las imágenes de los productos)
 const savePhoto = async (img, name, folder) => {
-    // const resize = folder === 'images' ? 300 : 800;
+    const resize = folder === 'avatars' ? 100 : 800;
     const dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
     try {
@@ -31,22 +31,17 @@ const savePhoto = async (img, name, folder) => {
         // Convertimos la imagen a un objeto tipo Sharp para poder redimensionarla.
         const sharpImg = sharp(img.data);
         // Redimensionamos la imagen. El parámetro "width" representa un ancho en píxeles.
-        // sharpImg.resize(resize);
+        sharpImg.resize(resize);
 
         // Generamos la ruta absoluta a la imagen.
         const imgPath = path.join(uploadsPath, name);
         // Guardamos la imagen en el disco.
-        // await sharpImg.toFile(imgPath);
-        // Convertimos la imagen a webp.
-        const imgWebp = sharpImg.webp({ quality: 75 });
-        // Guardamos la imagen en el disco.
-        await imgWebp.toFile(imgPath);
-
-        // await deletePhoto(name, 'images');
-
+        await sharpImg.toFile(imgPath);
+        // Retornamos el nombre que le hemos dado a la imagen.
         return name;
     } catch (err) {
         console.error(err);
+        saveFileError();
     }
 };
 

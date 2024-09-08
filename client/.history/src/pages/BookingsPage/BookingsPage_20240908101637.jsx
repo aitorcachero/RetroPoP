@@ -28,7 +28,7 @@ export default function BookingPage() {
 
     return (
         <>
-            <section className="list-reviews flex flex-col  justify-center items-center w-full">
+            <section>
                 <div className="w-full h-12">
                     <LateralBar />
                 </div>
@@ -37,7 +37,7 @@ export default function BookingPage() {
             ) : (
                 <h2 className="main_title">No tienes solicitudes pendientes</h2>
             )} */}
-                <h2 className="title-active font-extrabold text-2xl md:text-6xl text-slate-300 border-y border-slate-600 bg-slate-900 p-4">
+                <h2 className="title-active font-extrabold text-6xl text-slate-300 border-y border-slate-600 bg-slate-900 p-4">
                     Solicitudes de Reserva
                 </h2>
                 {bookings && (

@@ -138,6 +138,20 @@ export const backupDb = async () => {
         INSERT INTO users(email, username, password, avatar, bio, registrationCode, isActive)
           VALUES${usersQueryList.join(',')};
         `);
+        //     await connection.query(`
+        //   INSERT INTO users (id, email, username, password, avatar, bio, createdAt, modifiedAt, registrationCode, isActive)
+        //   VALUES
+        //   (1, 'usuario1@example.com', 'Usuario 1', '$2y$10$kE2aaTF8BFS7i2wWpR6YTOtMlgXTfTiERLhAoGN9m/8V115sitYyC', 'Usuario1.png', 'Amante de los tesoros olvidados.', NOW(), NULL, NULL, 1),
+        //   (2, 'usuario2@example.com', 'Usuario 2', '$2y$10$/8bOopCxettRBMrz/bDIMuZleq9vJKmZDx7UPrbt7Dl2bmoPQjZS6', 'Usuario2.png', 'Buscadora de reliquias digitales. Explorando el mundo de la tecnología retro.', NOW(), NULL, NULL, 1),
+        //   (3, 'usuario3@example.com', 'Usuario 3', '$2y$10$fG2u2mAoG0DAVIi5b//WjOfJnZ.GjO0v0erKog/S282mAyIi020pq', 'Usuario3.png', 'Un nostálgico digital. Encuentra conmigo la magia de lo retro-tech.', NOW(), NULL, NULL, 1),
+        //   (4, 'usuario4@example.com', 'Usuario 4', '$2y$10$/o0/Lg1MbhiszJ85tXY1Q.358Veew4UOSjZgOdVjZzv/nQgyLhcG.', 'Usuario4.png', 'En busca de la tecnología perdida. Una fanática de lo retro-tech explorando esta plataforma.', NOW(), NULL, NULL, 1),
+        //   (5, 'usuario5@example.com', 'Usuario 5', '$2y$10$AbPfGdCkITyxjLrEMtL43.NO7KlQABj83.eAv9XW2qzbTZ1nGwbay', 'Usuario5.png', 'Una entusiasta de lo vintage digital. Encuentra joyas tecnológicas del pasado en mi perfil.', NOW(), NULL, NULL, 1),
+        //   (6, 'usuario6@example.com', 'Usuario 6', '$2y$10$bsNliBaftKxPOgEEiRQBju72n.M2FhhsOskL7U4f6yvgyA9BqgaSq', 'Usuario6.png', 'Apasionada por lo clásico digital. Encuentra lo mejor del pasado en mi perfil.', NOW(), NULL, NULL, 1),
+        //   (7, 'usuario7@example.com', 'Usuario 7', '$2y$10$PY218sVlw8TCRc4zp.u1POwGFGwaNtvf4ci7wVB2jxt6hAFYNebvS', 'Usuario7.png', 'Entusiasta de lo vintage geek. Comparto mi pasión por lo retro en RetroPoP.', NOW(), NULL, NULL, 1),
+        //   (8, 'usuario8@example.com', 'Usuario 8', '$2y$10$bZVPpnoMk.rQdydweFaMUeZc7j.aiO4zZJg/0XAr.aBH1IumsdBA2', NULL, NULL, NOW(), NULL, '03c76d2a-e38a-464d-8f42-fb1730537f57', 0),
+        //   (9, 'usuario9@example.com', 'Usuario 9', '$2y$10$tOYpNu67WdzLVq1Hn5xwIOLFwkeVpoj2T3P22h6EVXw0ZVc.LEjcS', NULL, NULL, NOW(), NULL, '0873b0a0-d710-4e3f-a3d1-31f1e4281d53', 0),
+        //   (10, 'usuario10@example.com', 'Usuario 10', '$2y$10$wU3eqhGf2CxVn2l5KhCPmOK32Zs.XSKCXVPanh6co6pzU52hZGO16', NULL, NULL, NOW(), NULL, '6baa4df6-f7cc-49c2-9c31-0097b38d19dc', 0);
+        // `);
 
         console.log(
             FgLightMagenta,

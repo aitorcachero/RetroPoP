@@ -126,7 +126,7 @@ export default function FilteredPage() {
                                 }
                             >
                                 <option value="" defaultValue>
-                                    Todas las categorías
+                                    Selecciona categoría
                                 </option>
                                 {categorys.map((v, i) => (
                                     <option
@@ -150,7 +150,7 @@ export default function FilteredPage() {
                                 className="range-price"
                                 onChange={handleUpdateRangeValue}
                             />
-                            <p className="range-price__text text-4xl text-slate-300 font-bold">
+                            <p className="range-price__text text-2xl text-slate-300 font-extrabold">
                                 {filters?.actualPrice} €
                             </p>
                         </section>
@@ -162,7 +162,7 @@ export default function FilteredPage() {
                                 onChange={handleUpdateStateValue}
                             >
                                 <option value="all" defaultValue>
-                                    Cualquier estado
+                                    Selecciona estado
                                 </option>
                                 {productsState.map((v, i) => (
                                     <option key={i} value={v}>

@@ -150,7 +150,7 @@ export default function FilteredPage() {
                                 className="range-price"
                                 onChange={handleUpdateRangeValue}
                             />
-                            <p className="range-price__text text-4xl text-slate-300 font-bold">
+                            <p className="range-price__text text-2xl text-slate-300 font-extrabold">
                                 {filters?.actualPrice} €
                             </p>
                         </section>

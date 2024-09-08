@@ -5,7 +5,7 @@ import path from 'path';
 import sharp from 'sharp';
 
 // Importamos la constante que contiene el nombre del directorio de subida de archivos.
-import { UPLOADS_DIR } from '../../config.js';
+import { UPLOADS_DIR } from '../config.js';
 // import webpConvert from './webpConvert.js';
 import deletePhoto from './deletePhoto.js';
 
