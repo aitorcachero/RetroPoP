@@ -11,8 +11,6 @@ import {
     FgLightRed,
 } from '../helpers/colorsNode.js';
 
-import { hashPassword } from '../helpers/encripters.js';
-
 // Importamos la función que nos permite obtener una conexión libre con la base de datos.
 import getDb from './getDb.js';
 
