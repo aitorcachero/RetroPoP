@@ -116,7 +116,7 @@ export default function ProfilePage() {
                             backgroundClip: 'padding-box',
                         }}
                     >
-                        <h2 className="text-slate-500 font-extrabold text-2xl md:text-5xl ">
+                        <h2 className="text-slate-600 font-extrabold text-2xl md:text-5xl ">
                             Editar perfil
                         </h2>
 
