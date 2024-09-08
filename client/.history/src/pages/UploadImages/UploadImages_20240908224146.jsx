@@ -1,0 +1,67 @@
+import { useState } from 'react';
+import { uploadImages } from '../../services/fetchData';
+import { toast } from 'react-toastify';
+
+export default function UploadImages() {
+    const [file, setFile] = useState();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!file) return toast.error('Tienes que seleccionar una imagen');
+        const formData = new FormData();
+        formData.append('image', file);
+        const upload = await uploadImages(formData);
+        if (upload.status === 'ok') {
+            toast.success(upload.message);
+        } else {
+            toast.error(upload.message);
+        }
+    };
+    return (
+        <div className="w-full h-full flex justify-center items-center">
+            <form className="mt-20 bg-slate-800 border border-slate-600 rounded-lg p-10 w-96 text-white flex flex-col justify-center items-center gap-10">
+                <div>
+                    <input
+                        type="file"
+                        id="avatar"
+                        name="avatar"
+                        accept="image/*"
+                        onChange={(e) => setFile(e.target.files[0])}
+                    />
+                </div>
+                <div>
+                    <fieldset>
+                        <legend>Select a maintenance drone:</legend>
+
+                        <div>
+                            <input
+                                type="radio"
+                                id="huey"
+                                name="drone"
+                                value="huey"
+                                checked
+                            />
+                            <label htmlFor="huey">Imagen</label>
+                        </div>
+
+                        <div>
+                            <input
+                                type="radio"
+                                id="dewey"
+                                name="drone"
+                                value="dewey"
+                            />
+                            <label htmlFor="dewey">Avatar</label>
+                        </div>
+                    </fieldset>
+                </div>
+                <button
+                    className="bg-slate-800 border border-slate-500 rounded py-4 px-6"
+                    onClick={handleSubmit}
+                >
+                    Subir
+                </button>
+            </form>
+        </div>
+    );
+}
