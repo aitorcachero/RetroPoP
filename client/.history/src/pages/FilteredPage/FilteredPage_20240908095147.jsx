@@ -211,7 +211,7 @@ export default function FilteredPage() {
                             </ul>
                         )}
                         {filteredProducts?.length < 1 && (
-                            <div className="flex justify-center items-center w-[350px] shadow-xl shadow-black">
+                            <div className="flex justify-center items-center w-[350px]">
                                 <h2 className="text-white text-xl bg-slate-900 p-6 border border-slate-600 rounded-lg w-[350px] text-center">
                                     Sin resultados
                                 </h2>

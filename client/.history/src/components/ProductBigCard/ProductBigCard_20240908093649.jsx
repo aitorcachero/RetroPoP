@@ -176,7 +176,7 @@ export default function ProductBigCard({ product }) {
                     <img
                         src={`${APIUrl}/images/${product?.image}`}
                         alt=""
-                        className="w-[250px] rounded-xl border border-slate-600 shadow-lg shadow-black object-cover"
+                        className="w-[250px] rounded-xl border shadow shadow-black object-cover"
                     />
                     <div className="flex flex-row justify-center items-center">
                         <h2 className="text-blue-500 text-center font-bold text-lg md:text-xl">
@@ -194,15 +194,15 @@ export default function ProductBigCard({ product }) {
                 </div>
 
                 <footer className="flex flex-col gap-6 w-full justify-center items-center p-4 bg-slate-800">
-                    <div className=" text-slate-300 flex flex-row justify-around w-full font-bold md:text-base text-sm">
+                    <div className="product-page__footer__state">
                         <NavLink to={`/search/?category=${product?.category}`}>
-                            <h3 className="">#{product?.category}</h3>
+                            <h3 className="h3-footer">#{product?.category}</h3>
                         </NavLink>
                         <NavLink to={`/search/?place=${product?.place}`}>
-                            <h3 className="">{product?.place}</h3>
+                            <h3 className="h3-footer">{product?.place}</h3>
                         </NavLink>
                         <NavLink to={`/search/?state=${product?.state}`}>
-                            <h3 className="">{product?.state}</h3>
+                            <h3 className="h3-footer">{product?.state}</h3>
                         </NavLink>
                     </div>
                     <div className="flex flex-row gap-6 w-[300px] h-12 md:h-full md:w-full justify-around ">

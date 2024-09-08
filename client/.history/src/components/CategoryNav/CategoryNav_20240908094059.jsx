@@ -7,7 +7,7 @@ export default function CategoryNav() {
         <>
             <div className=" mb-10 md:mb-0 flex justify-center p-4">
                 <div>
-                    <section className="category-nav flex flex-1 flex-wrap md:flex-nowrap gap-2 p-2 bg-slate-900 border border-slate-600 md:p-4 ">
+                    <section className="category-nav flex flex-1 flex-wrap md:flex-nowrap gap-2 p-2 bg-slate-900 border border-slate-600 md:p-10 ">
                         {categoryNav.map((item, i) => (
                             <NavLink
                                 key={i}

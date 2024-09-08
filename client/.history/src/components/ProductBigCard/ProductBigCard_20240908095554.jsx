@@ -176,7 +176,7 @@ export default function ProductBigCard({ product }) {
                     <img
                         src={`${APIUrl}/images/${product?.image}`}
                         alt=""
-                        className="w-[250px] rounded-xl border border-slate-600 shadow-lg shadow-black object-cover"
+                        className="w-[250px] rounded-xl border border-slate-600 shadow shadow-black object-cover"
                     />
                     <div className="flex flex-row justify-center items-center">
                         <h2 className="text-blue-500 text-center font-bold text-lg md:text-xl">

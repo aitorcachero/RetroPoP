@@ -1,7 +1,7 @@
 // import ListProducts from '../../components/ListProducts/ListProducts';
 // import Navbar from '../../components/Navbar/Navbar';
 import { getSearchProductsService } from '../../services/fetchData';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './FilteredPage.css';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { buttonStyle, categorys, productsState } from '../../utils/const.js';
 
 export default function FilteredPage() {
     const { authUser } = useAuth();
+    const productsRef = useRef();
 
     const navigate = useNavigate();
     const name = useLocation().search;
@@ -109,6 +110,9 @@ export default function FilteredPage() {
         navigate(`/product/${id}`);
     };
 
+    const productosPintados =
+        productsRef?.current?.getElementsByTagName('li')?.length;
+
     return (
         <>
             <div className=" flex flex-col md:flex-row md:gap-20 w-full mt-10">
@@ -189,10 +193,13 @@ export default function FilteredPage() {
                         </div>
                     </form>
                 </aside>
-                <main className="w-full flex justify-center  ">
-                    <div className="w-full flex flex-col items-center ">
-                        {filteredProducts?.length > 0 && (
-                            <ul className="flex flex-wrap basis-2 gap-16 w-full justify-center">
+                <main className="w-full justify-center items-center ">
+                    <div className="w-full justify-center items-center">
+                        {filteredProducts.length > 0 && (
+                            <ul
+                                className="flex flex-wrap basis-2 gap-16 w-full justify-center"
+                                ref={productsRef}
+                            >
                                 {filteredProducts.map((product) => (
                                     <li
                                         className="li-filtered"
@@ -210,14 +217,10 @@ export default function FilteredPage() {
                                 ))}
                             </ul>
                         )}
-                        {filteredProducts?.length < 1 && (
-                            <div className="flex justify-center items-center w-[350px] shadow-xl shadow-black">
-                                <h2 className="text-white text-xl bg-slate-900 p-6 border border-slate-600 rounded-lg w-[350px] text-center">
-                                    Sin resultados
-                                </h2>
-                            </div>
-                        )}
                     </div>
+                    {filteredProducts.length < 1 && (
+                        <h2 className="text-white text-xl">Sin resultados</h2>
+                    )}
                 </main>
             </div>
         </>

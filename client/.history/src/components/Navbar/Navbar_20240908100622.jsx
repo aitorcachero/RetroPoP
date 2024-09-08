@@ -100,24 +100,21 @@ const Navbar = () => {
 
                         {showMenu && (
                             <div
-                                className="dropdown-menu right-0 md:right-20 w-44 bg-slate-900 text-white  border border-slate-600 h-24 flex flex-col justify-around items-center"
+                                className="dropdown-menu right-0 md:right-20 bg-slate-900 text-white  border border-slate-600 h-42"
                                 onClick={(e) => e.stopPropagation()}
                             >
-                                <ul className="w-full h-full flex flex-col items-center justify-center ">
-                                    <div className="hover:bg-slate-800 w-full h-full flex justify-center items-center">
+                                <ul className="p-4">
+                                    <div className="hover:bg-slate-800">
                                         <li
                                             onClick={handleClickProfile}
-                                            className="w-full"
+                                            className="p-10"
                                         >
                                             Ver perfil
                                         </li>
                                     </div>
 
-                                    <div className="hover:bg-slate-800 w-full h-full flex justify-center items-center">
-                                        <li
-                                            onClick={authLogout}
-                                            className="w-full"
-                                        >
+                                    <div className="hover:bg-slate-800">
+                                        <li onClick={authLogout}>
                                             Cerrar sesión
                                         </li>
                                     </div>

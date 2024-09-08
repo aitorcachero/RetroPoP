@@ -31,7 +31,6 @@ export default function FilteredPage() {
         estado: 'all',
         localidad: 'all',
     });
-    const [filteredProducts, setFilteredProducts] = useState();
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -71,20 +70,6 @@ export default function FilteredPage() {
         };
         fetchProducts();
     }, [name]);
-
-    useEffect(() => {
-        const filtersProducts = [...products].filter(
-            (product) =>
-                product.price <= filters.actualPrice &&
-                (filters.estado === 'all' ||
-                    product.state === filters.estado) &&
-                (filters.localidad === 'all' ||
-                    product.place
-                        .toLowerCase()
-                        .includes(filters.localidad.toLowerCase()))
-        );
-        setFilteredProducts(filtersProducts);
-    }, [filters]);
 
     const handleUpdateRangeValue = (e) => {
         const updateFilters = { ...filters };
@@ -189,33 +174,50 @@ export default function FilteredPage() {
                         </div>
                     </form>
                 </aside>
-                <main className="w-full flex justify-center  ">
-                    <div className="w-full flex flex-col items-center ">
-                        {filteredProducts?.length > 0 && (
+                <main className="w-full justify-center items-center ">
+                    <div className="w-full justify-center items-center">
+                        {products.length > 0 && (
                             <ul className="flex flex-wrap basis-2 gap-16 w-full justify-center">
-                                {filteredProducts.map((product) => (
-                                    <li
-                                        className="li-filtered"
-                                        key={product.id}
-                                        onClick={(event) =>
-                                            handleCardClick(event, product.id)
-                                        }
-                                    >
-                                        <ProductCard
-                                            productName={product.productName}
-                                            price={product.price}
-                                            image={product.image}
-                                        />
-                                    </li>
-                                ))}
+                                {[...products]
+                                    .filter(
+                                        (product) =>
+                                            product.price <=
+                                                filters.actualPrice &&
+                                            (filters.estado === 'all' ||
+                                                product.state ===
+                                                    filters.estado) &&
+                                            (filters.localidad === 'all' ||
+                                                product.place
+                                                    .toLowerCase()
+                                                    .includes(
+                                                        filters.localidad.toLowerCase()
+                                                    ))
+                                    )
+                                    .map((product) => (
+                                        <li
+                                            className="li-filtered"
+                                            key={product.id}
+                                            onClick={(event) =>
+                                                handleCardClick(
+                                                    event,
+                                                    product.id
+                                                )
+                                            }
+                                        >
+                                            <ProductCard
+                                                productName={
+                                                    product.productName
+                                                }
+                                                price={product.price}
+                                                image={product.image}
+                                            />
+                                        </li>
+                                    ))}
                             </ul>
                         )}
-                        {filteredProducts?.length < 1 && (
-                            <div className="flex justify-center items-center w-[350px] shadow-xl shadow-black">
-                                <h2 className="text-white text-xl bg-slate-900 p-6 border border-slate-600 rounded-lg w-[350px] text-center">
-                                    Sin resultados
-                                </h2>
-                            </div>
+
+                        {[...products].length === 0 && (
+                            <h2 className="no-results">Sin resultados</h2>
                         )}
                     </div>
                 </main>

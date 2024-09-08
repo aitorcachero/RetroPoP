@@ -189,9 +189,9 @@ export default function FilteredPage() {
                         </div>
                     </form>
                 </aside>
-                <main className="w-full flex justify-center  ">
-                    <div className="w-full flex flex-col items-center ">
-                        {filteredProducts?.length > 0 && (
+                <main className="w-full justify-center items-center ">
+                    <div className="w-full justify-center items-center">
+                        {filteredProducts.length > 0 && (
                             <ul className="flex flex-wrap basis-2 gap-16 w-full justify-center">
                                 {filteredProducts.map((product) => (
                                     <li
@@ -210,14 +210,10 @@ export default function FilteredPage() {
                                 ))}
                             </ul>
                         )}
-                        {filteredProducts?.length < 1 && (
-                            <div className="flex justify-center items-center w-[350px] shadow-xl shadow-black">
-                                <h2 className="text-white text-xl bg-slate-900 p-6 border border-slate-600 rounded-lg w-[350px] text-center">
-                                    Sin resultados
-                                </h2>
-                            </div>
-                        )}
                     </div>
+                    {filteredProducts.length < 1 && (
+                        <h2 className="text-white text-xl">Sin resultados</h2>
+                    )}
                 </main>
             </div>
         </>
