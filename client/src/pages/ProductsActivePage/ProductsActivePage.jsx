@@ -38,7 +38,7 @@ export default function ProductsActivePage() {
             <div className="w-full h-12">
                 <LateralBar />
             </div>
-            <h2 className="title-active font-extrabold text-2xl md:text-6xl text-slate-300 border-y border-slate-600 bg-slate-900 p-4">
+            <h2 className="title-active font-extrabold text-6xl text-slate-300">
                 Productos en venta
             </h2>
             <div className="list-products__container-active w-full">

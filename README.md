@@ -8,7 +8,7 @@ RetroPop es un marketplace de productos tecnológicos vintage, que permite a los
 
 A continuación, se puede ver un screenshot de de la homepage de RetroPoP de un usuario logueado.
 
-![HOMEPAGE](assets/homepage.webp)
+![HOMEPAGE](assets/homepage.JPG)
 
 ## Tecnologías utilizadas
 
