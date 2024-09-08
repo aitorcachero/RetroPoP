@@ -146,7 +146,7 @@ export default function FilteredPage() {
                                 className="outline-none rounded-xl p-2 w-full text-center"
                                 onChange={handleUpdateStateValue}
                             >
-                                <option value="all" defaultValue>
+                                <option value="" defaultValue>
                                     Selecciona estado
                                 </option>
                                 {productsState.map((v, i) => (
