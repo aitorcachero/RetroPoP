@@ -1,12 +1,13 @@
 import LateralBar from '../../components/LateralBar/LateralBar';
-import ProductCard from '../../components/ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
 import { getAllProductsService } from '../../services/fetchData';
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import './ProductsActivePage.css';
+import ProductCardProfile from '../../components/ProductCardProfile/ProductCardProfile';
 
 export default function ProductsActivePage() {
-    const { authFavs } = useAuth();
+    const { authUser } = useAuth();
 
     const [products, setProducts] = useState([]);
 
@@ -33,23 +34,24 @@ export default function ProductsActivePage() {
     };
 
     return (
-        <section className="list-products-active flex flex-col justify-center items-center w-full">
+        <section className="list-products-active flex flex-col  justify-center items-center w-full">
             <div className="w-full h-12">
                 <LateralBar />
             </div>
-            <div className="w-full bg-slate-900 border-y border-slate-600 m-10 flex justify-center items-center p-6">
-                <div className="font-extrabold text-2xl md:text-6xl text-slate-400">
-                    Favoritos
-                </div>
-            </div>
+
+            <h2 className="w-full m-10 font-extrabold text-6xl text-slate-300  bg-slate-900 border-y border-slate-600  h-12">
+                Productos en venta
+            </h2>
+
             <div className="list-products__container-active w-full">
                 <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center">
                     {products &&
                         products
-                            .filter((product) => {
-                                if (authFavs?.includes(product.id))
-                                    return product;
-                            })
+                            .filter(
+                                (product) =>
+                                    product.isSelled === 0 &&
+                                    product.userId === authUser?.id
+                            )
                             .map((product) => (
                                 <li
                                     key={product.id}
@@ -57,15 +59,10 @@ export default function ProductsActivePage() {
                                         handleCardClick(event, product.id)
                                     }
                                 >
-                                    <ProductCard
+                                    <ProductCardProfile
                                         productName={product.productName}
                                         price={product.price}
                                         image={product.image}
-                                        fav={
-                                            authFavs?.includes(product.id)
-                                                ? true
-                                                : false
-                                        }
                                     />
                                 </li>
                             ))}
@@ -74,9 +71,3 @@ export default function ProductsActivePage() {
         </section>
     );
 }
-
-// .filter((product) => {
-//                                 if (authFavs?.includes(product.id))
-//                                     return product;
-//                                 console.log(authFavs?.includes(product.id));
-//                             })

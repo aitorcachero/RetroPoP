@@ -28,7 +28,7 @@ export default function ReviewsPage() {
                 <LateralBar />
             </div>
             <div className="w-full bg-slate-900 border-y border-slate-600 m-10 flex justify-center items-center p-6">
-                <div className="font-extrabold text-2xl md:text-6xl text-slate-400 flex justify-center items-center">
+                <div className="font-extrabold text-2xl md:text-6xl text-slate-400">
                     Reseñas pendientes
                 </div>
             </div>
