@@ -93,8 +93,7 @@ export default function FilteredPage() {
     };
 
     const handleCardClick = (e, id) => {
-        e.preventDefault();
-        navigate(`/product/${id}`);
+        console.log(idt);
     };
 
     return (

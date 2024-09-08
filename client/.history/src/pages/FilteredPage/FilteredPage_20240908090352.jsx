@@ -92,9 +92,8 @@ export default function FilteredPage() {
         setFilters(updateFilters);
     };
 
-    const handleCardClick = (e, id) => {
-        e.preventDefault();
-        navigate(`/product/${id}`);
+    const handleCardClick = (e) => {
+        console.log(e.target);
     };
 
     return (
