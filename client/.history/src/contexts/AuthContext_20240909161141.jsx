@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     );
     const [authUser, setAuthUser] = useState(null);
     const [authFavs, setAuthFavs] = useState(null); // [1, 2, 3
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         // Función que obtiene los datos del usuario.

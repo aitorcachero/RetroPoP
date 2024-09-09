@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
     );
     const [authUser, setAuthUser] = useState(null);
     const [authFavs, setAuthFavs] = useState(null); // [1, 2, 3
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         // Función que obtiene los datos del usuario.
@@ -94,6 +94,8 @@ export const AuthProvider = ({ children }) => {
     // Función de login.
     const authLogin = async ({ email, password }) => {
         try {
+
+
             const body = await loginUserService(email, password);
 
             body.status === 'error'
@@ -109,7 +111,7 @@ export const AuthProvider = ({ children }) => {
         } catch (err) {
             if (err.message === 'Failed to fetch')
                 toastError('Error de conexión');
-        }
+        } finally
     };
 
     // Función de logout.

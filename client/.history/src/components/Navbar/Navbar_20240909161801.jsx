@@ -71,17 +71,13 @@ const Navbar = () => {
                     } `}
                 >
                     <button
-                        className={`upload-product md:w-[230px] md:h-[60px] p-2 text-xs md:text-lg shadow-xl shadow-black border border-slate-500 ${
-                            !loading ? 'flex' : 'hidden'
-                        }`}
+                        className="upload-product md:w-[230px] md:h-[60px] p-2 text-xs md:text-lg shadow-xl shadow-black border border-slate-500 "
                         style={{ cursor: 'pointer' }}
                     >
                         <img
                             src="/icons/add-product.png"
                             alt=""
-                            className={`w-8 md:w-12 ${
-                                !loading ? 'opacity-100' : 'opacity-0'
-                            }`}
+                            className="w-8 md:w-12"
                             loading="lazy"
                         />{' '}
                         <p className="hidden md:block">Subir producto</p>

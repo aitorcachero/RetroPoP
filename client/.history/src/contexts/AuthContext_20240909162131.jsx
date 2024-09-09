@@ -61,6 +61,10 @@ export const AuthProvider = ({ children }) => {
         if (authToken) fetchUser();
     }, [authToken]);
 
+    useEffect(() => {
+        if (loading) console.log('Se activa el loading');
+    }, [loading]);
+
     // Función de registro.
     const authRegister = async ({
         username,

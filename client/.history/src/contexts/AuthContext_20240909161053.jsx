@@ -31,14 +31,12 @@ export const AuthProvider = ({ children }) => {
     );
     const [authUser, setAuthUser] = useState(null);
     const [authFavs, setAuthFavs] = useState(null); // [1, 2, 3
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         // Función que obtiene los datos del usuario.
         const fetchUser = async () => {
             try {
-                setLoading(true);
-
                 const body = await getUserProfileService(authToken);
 
                 if (body.status === 'error') {
@@ -52,8 +50,6 @@ export const AuthProvider = ({ children }) => {
             } catch (err) {
                 // Manejamos los errores con toast.
                 toast.error(err.message);
-            } finally {
-                setLoading(false);
             }
         };
 
@@ -94,6 +90,8 @@ export const AuthProvider = ({ children }) => {
     // Función de login.
     const authLogin = async ({ email, password }) => {
         try {
+            setLoading(true);
+
             const body = await loginUserService(email, password);
 
             body.status === 'error'
@@ -109,6 +107,8 @@ export const AuthProvider = ({ children }) => {
         } catch (err) {
             if (err.message === 'Failed to fetch')
                 toastError('Error de conexión');
+        } finally {
+            setLoading(false);
         }
     };
 

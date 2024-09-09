@@ -11,7 +11,7 @@ import Loader from '../Loader/Loader.jsx';
 
 export default function ListProducts() {
     const { authUser, authFavs } = useAuth();
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState();
     const [products, setProducts] = useState([]);
     const [favs, setFavs] = useState([]);
 
