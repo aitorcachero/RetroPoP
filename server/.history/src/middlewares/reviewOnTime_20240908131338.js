@@ -6,6 +6,8 @@ const reviewOnTime = async (req, res, next) => {
     try {
         const [booking] = await getBookingByResModel(req.params.resno);
 
+        console.log('que es esto', booking);
+
         let { deliveryTime } = booking[0];
         deliveryTime = formatDate(deliveryTime);
 

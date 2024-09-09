@@ -23,9 +23,8 @@ const savePhoto = async (img, name, folder) => {
 
         try {
             // El método "access" lanza un error si la ruta especificada no existe.
-            console.log('checkFirst');
-            const checkDir = await fs.access(uploadsPath);
-            console.log('checkSecond', checkDir);
+
+            await fs.access(uploadsPath);
         } catch {
             // Si no existe entraremos en este catch y crearemos el directorio.
             await fs.mkdir(uploadsPath);

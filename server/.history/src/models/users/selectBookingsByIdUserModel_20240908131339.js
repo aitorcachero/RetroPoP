@@ -17,6 +17,8 @@ const selectBookingsByIdUserModel = async (id) => {
             [id]
         );
 
+        console.log('desde el model', bookings);
+
         return bookings;
     } finally {
         if (connection) connection.release();

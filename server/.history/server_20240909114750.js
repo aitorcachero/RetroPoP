@@ -46,7 +46,6 @@ server.use(fileUpload());
 server.get('/', (req, res) => {
     res.send('Bienvenido a RetroPoP!');
 });
-
 server.post('/uploadimages', async (req, res) => {
     const image = req?.files?.images;
     const type = req?.body?.type;
