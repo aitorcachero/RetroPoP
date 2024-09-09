@@ -13,8 +13,7 @@ import { buttonStyle, profileBarStyle } from '../../utils/const.js';
 export default function ProfilePage() {
     const fileInputRef = useRef(null);
     // Obtiene datos de usuario y función para actualizar el perfil desde el hook de autenticación.
-    const { authUser, setAuthUser, authUpdateProfile, authToken, authLogout } =
-        useAuth();
+    const { authUser, authUpdateProfile, authToken, authLogout } = useAuth();
     // Configura estados iniciales para username, email, bio y avatar con datos del usuario.
 
     const [bio, setBio] = useState(''); // Si no hay bio, establece una cadena vacía.
@@ -24,10 +23,11 @@ export default function ProfilePage() {
     const [previewUrl, setPreviewUrl] = useState(''); // Almacena la url de la previsualiza
     const navigate = useNavigate();
 
-    console.log(authUser);
     // Efecto para actualizar estados cuando cambia el usuario.
     useEffect(() => {
         if (authUser) {
+            setUsername(authUser.username);
+            setEmail(authUser.email);
             setBio(authUser.bio || '');
             authUser.avatar
                 ? setImg(`${APIUrl}/avatars/${authUser.avatar}`)
@@ -42,6 +42,13 @@ export default function ProfilePage() {
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
 
+        // Validación de campos obligatorios.
+        if (!username.trim() || !email.trim()) {
+            return toast.error(
+                'Por favor, completa todos los campos obligatorios.'
+            );
+        }
+
         // Creación de un objeto FormData para enviar los datos del formulario.
         const formData = new FormData();
         formData.append('bio', bio);
@@ -54,10 +61,7 @@ export default function ProfilePage() {
         try {
             // Llama a la función para actualizar el perfil de autenticación del usuario.
 
-            const update = await authUpdateProfile(formData);
-            console.log(update);
-            // const updateProfile = { ...authUser };
-            // updateProfile.bio = bio;
+            await authUpdateProfile(formData);
         } catch (error) {
             toast.error('Error al actualizar el perfil');
         }
@@ -156,7 +160,7 @@ export default function ProfilePage() {
                                 <input
                                     type="text"
                                     className="rounded-lg h-12 border  text-center w-full md:w-96 bg-slate-800 border-slate-600 "
-                                    value={authUser.username}
+                                    value={username && username}
                                     disabled
                                 />
                             </div>
@@ -167,7 +171,7 @@ export default function ProfilePage() {
                                 <input
                                     type="text"
                                     className="rounded-lg h-12 border w-full md:w-96 border-slate-600 text-center bg-slate-800"
-                                    value={authUser.email}
+                                    value={email && email}
                                     disabled
                                 />
                             </div>

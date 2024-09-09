@@ -36,10 +36,6 @@ const editUserController = async (req, res, next) => {
         res.send({
             status: 'ok',
             message: 'Usuario editado correctamente',
-            data: {
-                avatar: hashedName,
-                bio: req.body.bio,
-            },
         });
     } catch (error) {
         next(error);

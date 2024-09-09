@@ -37,8 +37,8 @@ const editUserController = async (req, res, next) => {
             status: 'ok',
             message: 'Usuario editado correctamente',
             data: {
-                avatar: hashedName,
-                bio: req.body.bio,
+                avatar: '',
+                bio: '',
             },
         });
     } catch (error) {

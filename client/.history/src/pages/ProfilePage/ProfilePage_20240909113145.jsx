@@ -55,9 +55,8 @@ export default function ProfilePage() {
             // Llama a la función para actualizar el perfil de autenticación del usuario.
 
             const update = await authUpdateProfile(formData);
-            console.log(update);
-            // const updateProfile = { ...authUser };
-            // updateProfile.bio = bio;
+            const updateProfile = { ...authUser };
+            updateProfile.bio = bio;
         } catch (error) {
             toast.error('Error al actualizar el perfil');
         }

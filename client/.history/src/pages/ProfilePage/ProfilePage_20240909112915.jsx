@@ -24,7 +24,6 @@ export default function ProfilePage() {
     const [previewUrl, setPreviewUrl] = useState(''); // Almacena la url de la previsualiza
     const navigate = useNavigate();
 
-    console.log(authUser);
     // Efecto para actualizar estados cuando cambia el usuario.
     useEffect(() => {
         if (authUser) {
@@ -54,10 +53,7 @@ export default function ProfilePage() {
         try {
             // Llama a la función para actualizar el perfil de autenticación del usuario.
 
-            const update = await authUpdateProfile(formData);
-            console.log(update);
-            // const updateProfile = { ...authUser };
-            // updateProfile.bio = bio;
+            await authUpdateProfile(formData);
         } catch (error) {
             toast.error('Error al actualizar el perfil');
         }
