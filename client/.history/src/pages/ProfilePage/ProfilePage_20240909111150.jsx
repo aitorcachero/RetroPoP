@@ -107,10 +107,10 @@ export default function ProfilePage() {
                 <div className="w-full h-12 ">
                     <LateralBar />
                 </div>
-                <h2 className={profileBarStyle}>Editar perfil</h2>
                 <div className=" p-2 flex flex-col justify-center items-center w-full">
+                    <h2 className={profileBarStyle}>Editar perfil</h2>
                     <form
-                        className=" flex flex-col justify-start items-center bg-[#ffffffb7] border border-slate-600 rounded-xl py-10 md:p-10 mb-12 gap-4 w-full md:w-[800px] bg-slate-950 text-white"
+                        className="mt-4 flex flex-col justify-start items-center bg-[#ffffffb7] border border-slate-600 rounded-xl py-10 md:p-10 mb-12 gap-4 w-full md:w-[800px] bg-slate-950 text-white"
                         style={{
                             background:
                                 'linear-gradient(71deg, #080509, #1a171c, #080509)',
