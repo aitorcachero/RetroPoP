@@ -114,7 +114,7 @@ export default function LoginPage() {
     return (
         <>
             <div className="container-login">
-                <div className="wrapper mt-40 relative w-[320px] h-[500px] md:w-[500px] md:h-[500px]">
+                <div className="wrapper mt-40 relative w-[350px] h-[500px] md:w-[500px] md:h-[500px]">
                     <div className="form-wrapper sign-up bg-slate-900 border border-slate-600 text-white">
                         <form action="" onSubmit={registerSubmit}>
                             <h2 className="text-white">Registro</h2>

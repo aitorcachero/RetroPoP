@@ -1,14 +1,14 @@
 import LateralBar from '../../components/LateralBar/LateralBar';
-import ProductCard from '../../components/ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
 import { getAllProductsService } from '../../services/fetchData';
 import useAuth from '../../hooks/useAuth';
 import { NavLink, useNavigate } from 'react-router-dom';
+import ProductCardProfile from '../../components/ProductCardProfile/ProductCardProfile';
 import Loader from '../../components/Loader/Loader';
 import { profileBarStyle } from '../../utils/const';
 
-export default function ProductsActivePage() {
-    const { authFavs, loading, setLoading } = useAuth();
+export default function ProductsSelledPage() {
+    const { authUser, loading, setLoading } = useAuth();
 
     const [products, setProducts] = useState([]);
 
@@ -20,9 +20,11 @@ export default function ProductsActivePage() {
             try {
                 const body = await getAllProductsService();
                 setProducts(
-                    body.data.filter((product) => {
-                        if (authFavs?.includes(product.id)) return product;
-                    })
+                    body.data.filter(
+                        (product) =>
+                            product.isSelled === 1 &&
+                            product.userId === authUser?.id
+                    )
                 );
             } catch (err) {
                 console.log(err.message);
@@ -39,10 +41,10 @@ export default function ProductsActivePage() {
     };
 
     return (
-        <section className="list-products-active flex flex-col justify-center items-center w-full">
+        <section className="list-products-active flex flex-col  justify-center items-center w-full">
             <LateralBar />
 
-            <h2 className={profileBarStyle}>Favoritos</h2>
+            <h2 className={profileBarStyle}>Productos vendidos</h2>
 
             <div className="list-products__container-active w-full">
                 <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center mb-20">
@@ -54,15 +56,10 @@ export default function ProductsActivePage() {
                                     handleCardClick(event, product.id)
                                 }
                             >
-                                <ProductCard
+                                <ProductCardProfile
                                     productName={product.productName}
                                     price={product.price}
                                     image={product.image}
-                                    fav={
-                                        authFavs?.includes(product.id)
-                                            ? true
-                                            : false
-                                    }
                                 />
                             </li>
                         ))}
@@ -70,11 +67,12 @@ export default function ProductsActivePage() {
                     {products.length === 0 && !loading && (
                         <div className="flex flex-col justify-center items-center w-[350px] md:w-[800px] shadow-xl shadow-black bg-slate-900 border border-slate-600 p-6 ">
                             <h2 className="text-white md:text-xl  p-6 rounded-lg  text-center">
-                                No tienes ningún producto guardado en favoritos
+                                Todavía no has vendido ningún producto en
+                                RetroPoP
                             </h2>
                             <div className="w-full flex justify-center items-center">
                                 <NavLink
-                                    to="/search"
+                                    to="/upload"
                                     className="w-full md:w-auto"
                                 >
                                     <button
@@ -82,7 +80,7 @@ export default function ProductsActivePage() {
                                         style={{ cursor: 'pointer' }}
                                     >
                                         <p className="  font-bold">
-                                            BUSCAR PRODUCTOS
+                                            SUBIR PRODUCTO
                                         </p>
                                     </button>
                                 </NavLink>

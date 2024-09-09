@@ -89,9 +89,9 @@ const ProductCreateForm = () => {
     };
     // Renderizado del formulario y elementos de la interfaz del usuario
     return (
-        <div className="product-create-form-container w-full h-full">
+        <div className="product-create-form-container w-full">
             <form
-                className="flex flex-col justify-center items-center gap-4 p-6 mt-10 mb-20 bg-slate-900 shadow-xl shadow-black border border-slate-700 md:px-20"
+                className="flex flex-col justify-center items-center gap-4 p-6 my-24 bg-slate-900 shadow-xl shadow-black border border-slate-700 md:px-20"
                 onSubmit={handleProductCreate}
             >
                 <header className="title-upload-product">
