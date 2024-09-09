@@ -24,7 +24,7 @@ export default function FilteredPage() {
         localidad: 'all',
     };
 
-    const [products, setProducts] = useState();
+    const [products, setProducts] = useState([]);
     const [filters, setFilters] = useState({
         categoria: useLocation().search,
         actualPrice: 0,
@@ -35,8 +35,8 @@ export default function FilteredPage() {
     const [filteredProducts, setFilteredProducts] = useState();
 
     useEffect(() => {
-        setProducts();
-        setFilteredProducts();
+        setProducts([]);
+        setFilteredProducts([]);
         setLoading(true);
         const fetchProducts = async () => {
             try {
@@ -79,19 +79,17 @@ export default function FilteredPage() {
     }, [name]);
 
     useEffect(() => {
-        if (products) {
-            const filtersProducts = [...products].filter(
-                (product) =>
-                    product.price <= filters.actualPrice &&
-                    (filters.estado === 'all' ||
-                        product.state === filters.estado) &&
-                    (filters.localidad === 'all' ||
-                        product.place
-                            .toLowerCase()
-                            .includes(filters.localidad.toLowerCase()))
-            );
-            setFilteredProducts(filtersProducts);
-        }
+        const filtersProducts = [...products].filter(
+            (product) =>
+                product.price <= filters.actualPrice &&
+                (filters.estado === 'all' ||
+                    product.state === filters.estado) &&
+                (filters.localidad === 'all' ||
+                    product.place
+                        .toLowerCase()
+                        .includes(filters.localidad.toLowerCase()))
+        );
+        setFilteredProducts(filtersProducts);
     }, [filters]);
 
     const handleUpdateRangeValue = (e) => {
@@ -120,8 +118,7 @@ export default function FilteredPage() {
     return (
         <>
             <div className=" flex flex-col md:flex-row md:gap-20 w-full mt-10">
-                {loading && <Loader />}
-                {filteredProducts && (
+                {filteredProducts?.length > 0 && (
                     <>
                         <aside className="   p-4 -mt-10 md:-mt-0 md:p-0 md:w-[500px] flex flex-col justify-start items-center">
                             <form className="flex flex-col justify-center items-center rounded-xl bg-slate-900 border border-slate-600  md:ml-6  md:gap-10 h-auto py-4 gap-4 w-[350px] md:w-[500px]">
@@ -243,6 +240,7 @@ export default function FilteredPage() {
                                     ))}
                                 </ul>
 
+                                {loading && <Loader />}
                                 {filteredProducts &&
                                     !loading &&
                                     filteredProducts?.length < 1 && (

@@ -35,8 +35,8 @@ export default function FilteredPage() {
     const [filteredProducts, setFilteredProducts] = useState();
 
     useEffect(() => {
-        setProducts();
-        setFilteredProducts();
+        setProducts([]);
+        setFilteredProducts([]);
         setLoading(true);
         const fetchProducts = async () => {
             try {
@@ -79,19 +79,17 @@ export default function FilteredPage() {
     }, [name]);
 
     useEffect(() => {
-        if (products) {
-            const filtersProducts = [...products].filter(
-                (product) =>
-                    product.price <= filters.actualPrice &&
-                    (filters.estado === 'all' ||
-                        product.state === filters.estado) &&
-                    (filters.localidad === 'all' ||
-                        product.place
-                            .toLowerCase()
-                            .includes(filters.localidad.toLowerCase()))
-            );
-            setFilteredProducts(filtersProducts);
-        }
+        const filtersProducts = [...products].filter(
+            (product) =>
+                product.price <= filters.actualPrice &&
+                (filters.estado === 'all' ||
+                    product.state === filters.estado) &&
+                (filters.localidad === 'all' ||
+                    product.place
+                        .toLowerCase()
+                        .includes(filters.localidad.toLowerCase()))
+        );
+        setFilteredProducts(filtersProducts);
     }, [filters]);
 
     const handleUpdateRangeValue = (e) => {
