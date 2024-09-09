@@ -191,17 +191,13 @@ export default function LoginPage() {
                         <form action="" onSubmit={LoginSubmit}>
                             <h2 className="text-white">Login</h2>
                             <div className="input-group md:w-[320px] w-[220px]">
-                                <input
-                                    type="text"
-                                    className="border border-slate-600"
-                                    required
-                                />
+                                <input type="text" required />
 
                                 <label htmlFor="">Email</label>
                             </div>
                             <div className="input-group md:w-[320px] w-[220px]">
                                 <input
-                                    className="border border-slate-600"
+                                    className="border"
                                     type={passLog}
                                     onChange={(e) =>
                                         setPassLogLength(e.target.value.length)

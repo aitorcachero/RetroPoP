@@ -35,8 +35,6 @@ export default function FilteredPage() {
     const [filteredProducts, setFilteredProducts] = useState();
 
     useEffect(() => {
-        setProducts([]);
-        setFilteredProducts([]);
         setLoading(true);
         const fetchProducts = async () => {
             try {
@@ -126,7 +124,7 @@ export default function FilteredPage() {
                             </h3>
                             <select
                                 name="select"
-                                className="select-category w-full bg-slate-800 text-white border border-slate-600"
+                                className="select-category w-full bg-slate-800 text-white"
                                 onChange={(e) =>
                                     navigate(
                                         `/search/?category=${e.target.value}`
@@ -194,7 +192,7 @@ export default function FilteredPage() {
                                 </h3>
                                 <input
                                     type="text"
-                                    className="outline-none rounded-xl p-2 w-full text-center bg-slate-800 text-white border border-slate-600"
+                                    className="outline-none rounded-xl p-2 w-full text-center bg-slate-800 text-white"
                                     onChange={handleUpdatePlaceValue}
                                 />
                             </section>

@@ -193,7 +193,7 @@ export default function LoginPage() {
                             <div className="input-group md:w-[320px] w-[220px]">
                                 <input
                                     type="text"
-                                    className="border border-slate-600"
+                                    className="border border-slate"
                                     required
                                 />
 

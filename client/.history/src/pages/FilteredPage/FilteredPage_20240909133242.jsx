@@ -35,8 +35,6 @@ export default function FilteredPage() {
     const [filteredProducts, setFilteredProducts] = useState();
 
     useEffect(() => {
-        setProducts([]);
-        setFilteredProducts([]);
         setLoading(true);
         const fetchProducts = async () => {
             try {

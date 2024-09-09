@@ -178,7 +178,7 @@ export default function ProfilePage() {
                                 <textarea
                                     onChange={(e) => setBio(e.target.value)}
                                     value={bio && bio}
-                                    className="profile-body-bio-input w-full bg-slate-800 border border-slate-600 outline-none"
+                                    className="profile-body-bio-input w-full bg-slate-800 border-2 border-slate-600 outline-none"
                                     rows="5"
                                 ></textarea>
                             </div>
