@@ -148,7 +148,7 @@ export default function FilteredPage() {
                             </select>
                         </section>
                         <div className="w-full bg-slate-800 md:bg-slate-900 flex justify-center items-center">
-                            <section className="container-aside__section_price   md:h-[150px]">
+                            <section className="container-aside__section_price md:gap-4 md:h-[150px]">
                                 <h3 className="filter-h3 text-lg font-bold md:text-3xl">
                                     Precio
                                 </h3>

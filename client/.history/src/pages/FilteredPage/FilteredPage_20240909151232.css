@@ -100,6 +100,7 @@ input[type='range']::-webkit-slider-runnable-track {
     border: 1px solid #475569;
 }
 input[type='range']::-webkit-slider-thumb {
+    box-shadow: 3px 3px 3px #7e7e7e;
     border: 2px solid #475569;
     height: 23px;
     width: 23px;
@@ -123,6 +124,7 @@ input[type='range']::-moz-range-track {
     border: 1px solid #475569;
 }
 input[type='range']::-moz-range-thumb {
+    box-shadow: 3px 3px 3px #7e7e7e;
     border: 2px solid #475569;
     height: 23px;
     width: 23px;
@@ -153,7 +155,7 @@ input[type='range']::-ms-fill-upper {
 }
 input[type='range']::-ms-thumb {
     margin-top: 1px;
-
+    box-shadow: 3px 3px 3px #7e7e7e;
     border: 2px solid #475569;
     height: 23px;
     width: 23px;
