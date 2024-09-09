@@ -6,7 +6,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import './ProductsActivePage.css';
 import ProductCardProfile from '../../components/ProductCardProfile/ProductCardProfile';
 import Loader from '../../components/Loader/Loader';
-import { profileBarStyle } from '../../utils/const';
 
 export default function ProductsActivePage() {
     const { authUser, loading, setLoading } = useAuth();
@@ -46,7 +45,14 @@ export default function ProductsActivePage() {
             <div className="w-full h-12">
                 <LateralBar />
             </div>
-            <h2 className={profileBarStyle}>Productos en venta</h2>
+            {/* <div className="w-full bg-slate-900 border-y border-slate-600 mb-10 flex justify-center items-center p-6">
+                <div className="font-extrabold text-2xl md:text-6xl text-slate-400">
+                    Productos en venta
+                </div>
+            </div> */}
+            <h2 className="title-active font-extrabold text-6xl text-slate-300 border-y border-slate-600 bg-slate-900 p-4">
+                Productos en venta
+            </h2>
 
             <div className="list-products__container-active w-full">
                 <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center">

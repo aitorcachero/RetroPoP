@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function LateralBar() {
     return (
-        <nav className="w-full bg-slate-800 h-16 border-b border-slate-600">
+        <nav className="w-full bg-slate-800 h-16 border border-slate-600">
             <ul className="flex flex-row h-full">
                 {lateralBarProfile.map((item, i) => (
                     <NavLink

@@ -169,9 +169,6 @@ const productsState = [
 const buttonStyle =
     'rounded-lg bg-slate-800 cursor pointer text-white font-bold  md:p-4 border border-slate-600 hover:bg-slate-700 w-full min-h-12';
 
-const profileBarStyle =
-    'w-full mb-8 text-center font-extrabold text-3xl md:text-6xl text-slate-300 border-y border-slate-600 bg-slate-900 p-4';
-
 export {
     categoryNav,
     footerSocialMedia,
@@ -179,5 +176,4 @@ export {
     categorys,
     productsState,
     buttonStyle,
-    profileBarStyle,
 };
