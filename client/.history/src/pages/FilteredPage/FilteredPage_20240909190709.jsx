@@ -11,7 +11,6 @@ import Loader from '../../components/Loader/Loader.jsx';
 
 export default function FilteredPage() {
     const { authUser } = useAuth();
-    const [loading, setLoading] = useState();
 
     const navigate = useNavigate();
     const name = useLocation().search;
