@@ -1,13 +1,14 @@
 import LateralBar from '../../components/LateralBar/LateralBar';
-import ProductCard from '../../components/ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
 import { getAllProductsService } from '../../services/fetchData';
 import useAuth from '../../hooks/useAuth';
 import { NavLink, useNavigate } from 'react-router-dom';
+import './ProductsActivePage.css';
+import ProductCardProfile from '../../components/ProductCardProfile/ProductCardProfile';
 import Loader from '../../components/Loader/Loader';
 
 export default function ProductsActivePage() {
-    const { authFavs, loading, setLoading } = useAuth();
+    const { authUser, loading, setLoading } = useAuth();
 
     const [products, setProducts] = useState([]);
 
@@ -19,10 +20,13 @@ export default function ProductsActivePage() {
             try {
                 const body = await getAllProductsService();
                 setProducts(
-                    body.data.filter((product) => {
-                        if (authFavs?.includes(product.id)) return product;
-                    })
+                    body.data.filter(
+                        (product) =>
+                            product.isSelled === 0 &&
+                            product.userId === authUser?.id
+                    )
                 );
+                console.log(products);
             } catch (err) {
                 console.log(err.message);
             } finally {
@@ -38,15 +42,19 @@ export default function ProductsActivePage() {
     };
 
     return (
-        <section className="list-products-active flex flex-col justify-center items-center w-full">
+        <section className="list-products-active flex flex-col  justify-center items-center w-full">
             <div className="w-full h-12">
                 <LateralBar />
             </div>
             <div className="w-full bg-slate-900 border-y border-slate-600 m-10 flex justify-center items-center p-6">
                 <div className="font-extrabold text-2xl md:text-6xl text-slate-400">
-                    Favoritos
+                    Productos en venta
                 </div>
             </div>
+            {/* <h2 className=" w-full m-10 font-extrabold text-xl md:text-6xl text-slate-300  bg-slate-900 border-y border-slate-600  h-20">
+                Productos en venta
+            </h2> */}
+
             <div className="list-products__container-active w-full">
                 <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center">
                     {products &&
@@ -57,15 +65,10 @@ export default function ProductsActivePage() {
                                     handleCardClick(event, product.id)
                                 }
                             >
-                                <ProductCard
+                                <ProductCardProfile
                                     productName={product.productName}
                                     price={product.price}
                                     image={product.image}
-                                    fav={
-                                        authFavs?.includes(product.id)
-                                            ? true
-                                            : false
-                                    }
                                 />
                             </li>
                         ))}
@@ -73,23 +76,18 @@ export default function ProductsActivePage() {
                     {products.length === 0 && !loading && (
                         <div className="flex flex-col justify-center items-center w-[350px] md:w-[800px] shadow-xl shadow-black bg-slate-900 border border-slate-600 p-6 ">
                             <h2 className="text-white md:text-xl  p-6 rounded-lg  text-center">
-                                No tienes ningún producto guardado en favoritos
+                                No tienes ningún producto a la venta
                             </h2>
-                            <div className="w-full flex justify-center items-center">
-                                <NavLink
-                                    to="/search"
-                                    className="w-full md:w-auto"
+                            <NavLink to="/upload" className="">
+                                <button
+                                    className=" md:w-[230px] md:h-[60px] p-2 text-xs md:text-lg shadow-xl shadow-black border border-slate-500 rounded-lg bg-slate-800 hover:bg-green-600"
+                                    style={{ cursor: 'pointer' }}
                                 >
-                                    <button
-                                        className="w-full md:w-[230px] md:h-[60px] p-2 text-xs md:text-lg shadow-xl shadow-black border border-slate-500 rounded-lg bg-slate-800 hover:bg-green-600 text-slate-400 hover:text-white min-h-12"
-                                        style={{ cursor: 'pointer' }}
-                                    >
-                                        <p className="  font-bold">
-                                            BUSCAR PRODUCTOS
-                                        </p>
-                                    </button>
-                                </NavLink>
-                            </div>
+                                    <p className=" text-slate-400 font-bold">
+                                        SUBIR PRODUCTO
+                                    </p>
+                                </button>
+                            </NavLink>
                         </div>
                     )}
                 </ul>
@@ -97,9 +95,3 @@ export default function ProductsActivePage() {
         </section>
     );
 }
-
-// .filter((product) => {
-//                                 if (authFavs?.includes(product.id))
-//                                     return product;
-//                                 console.log(authFavs?.includes(product.id));
-//                             })

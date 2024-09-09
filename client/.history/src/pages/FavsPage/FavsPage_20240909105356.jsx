@@ -73,11 +73,12 @@ export default function ProductsActivePage() {
                     {products.length === 0 && !loading && (
                         <div className="flex flex-col justify-center items-center w-[350px] md:w-[800px] shadow-xl shadow-black bg-slate-900 border border-slate-600 p-6 ">
                             <h2 className="text-white md:text-xl  p-6 rounded-lg  text-center">
-                                No tienes ningún producto guardado en favoritos
+                                Todavía no has vendido ningún producto en
+                                RetroPoP
                             </h2>
                             <div className="w-full flex justify-center items-center">
                                 <NavLink
-                                    to="/search"
+                                    to="/upload"
                                     className="w-full md:w-auto"
                                 >
                                     <button
@@ -85,7 +86,7 @@ export default function ProductsActivePage() {
                                         style={{ cursor: 'pointer' }}
                                     >
                                         <p className="  font-bold">
-                                            BUSCAR PRODUCTOS
+                                            SUBIR PRODUCTO
                                         </p>
                                     </button>
                                 </NavLink>

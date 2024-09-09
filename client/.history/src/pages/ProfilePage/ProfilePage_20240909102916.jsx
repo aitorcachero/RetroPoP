@@ -107,7 +107,7 @@ export default function ProfilePage() {
                 <div className="w-full h-12 ">
                     <LateralBar />
                 </div>
-                <div className=" p-2 flex flex-col justify-center items-center w-full">
+                <div className=" p-4 flex flex-col justify-center items-center w-full">
                     <form
                         className="mt-4 flex flex-col justify-start items-center bg-[#ffffffb7] border border-slate-600 rounded-xl py-10 md:p-10 mb-12 gap-4 w-full md:w-[800px] bg-slate-950 text-white"
                         style={{
@@ -121,10 +121,10 @@ export default function ProfilePage() {
                         </h2>
 
                         <section className="profile-avatar-container flex flex-col md:flex-row p-4 gap-4 border border-slate-600 bg-slate-900">
-                            <h4 className="profile-avatar-title w-1/3 text-center md:text-4xl font-bold text-slate-300">
+                            <h4 className="profile-avatar-title w-1/3">
                                 Avatar
                             </h4>
-                            <div className="w-1/3 flex justify-center items-center">
+                            <div className="w-1/3">
                                 <img
                                     src={previewUrl ? previewUrl : img}
                                     alt="avatar"
@@ -132,13 +132,13 @@ export default function ProfilePage() {
                                     loading="lazy"
                                 />
                             </div>
-                            <div className="conditional-img flex justify-center items-center w-[150px] md:w-1/3 h-12 md:h-16">
+                            <div className="conditional-img flex justify-center items-center w-[150px] md:w-auto h-12 md:h-16">
                                 <label
                                     htmlFor="file-input"
-                                    className="custom-file-label h-full flex justify-center items-center cursor-pointer  w-full"
+                                    className="custom-file-label h-full flex justify-center items-center cursor-pointer w-full"
                                 >
                                     <span
-                                        className={`${buttonStyle} flex justify-center items-center h-12  text-center w-full text-xs md:text-sm`}
+                                        className={`${buttonStyle} flex justify-center items-center h-12  text-center w-1/3`}
                                     >
                                         {`${
                                             avatar || img

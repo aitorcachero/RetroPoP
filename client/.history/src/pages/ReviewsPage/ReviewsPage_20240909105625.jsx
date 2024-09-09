@@ -54,16 +54,13 @@ export default function ReviewsPage() {
                                 />
                             </li>
                         ))}
-                    {!reviews ||
-                        (reviews.length === 0 && !loading && (
-                            <div className="flex justify-center items-center w-[350px] shadow-xl shadow-black">
-                                <h2 className="text-white text-xl bg-slate-900 p-6 border border-slate-600 rounded-lg w-[350px] text-center">
-                                    No tienes ninguna reserva
-                                </h2>
-                            </div>
-                        ))}
-                    {loading && !reviews && <Loader />}
                 </ul>
+                {reviews.length === 0 && !loading && (
+                    <p className="reviews-no-pendings">
+                        No tienes reseñas pendientes
+                    </p>
+                )}
+                {loading && !reviews && <Loader />}
             </div>
         </section>
     );

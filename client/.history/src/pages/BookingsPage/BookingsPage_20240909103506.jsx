@@ -57,11 +57,9 @@ export default function BookingPage() {
                     </section>
                 )}
                 {!bookings && !loading && (
-                    <div className="flex justify-center items-center w-[350px] shadow-xl shadow-black">
-                        <h2 className="text-white text-xl bg-slate-900 p-6 border border-slate-600 rounded-lg w-[350px] text-center">
-                            No tienes ninguna reserva
-                        </h2>
-                    </div>
+                    <p className="booking-no-results">
+                        No tienes reservas activas
+                    </p>
                 )}
             </section>
         </>

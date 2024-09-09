@@ -121,7 +121,7 @@ export default function ProfilePage() {
                         </h2>
 
                         <section className="profile-avatar-container flex flex-col md:flex-row p-4 gap-4 border border-slate-600 bg-slate-900">
-                            <h4 className="profile-avatar-title w-1/3 text-center md:text-4xl font-bold text-slate-300">
+                            <h4 className="profile-avatar-title w-1/3 text-center md:text-2xl font-bold text-slate-300">
                                 Avatar
                             </h4>
                             <div className="w-1/3 flex justify-center items-center">

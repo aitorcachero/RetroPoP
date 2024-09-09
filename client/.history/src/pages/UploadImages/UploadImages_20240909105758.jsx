@@ -35,7 +35,10 @@ export default function UploadImages() {
                     />
                 </div>
                 <div>
-                    <fieldset className="flex flex-col gap-4">
+                    <fieldset
+                        className="flex flex-col gap-4"
+                        onSelect={(e) => console.log(e.target.value)}
+                    >
                         <div>
                             <input
                                 type="radio"
