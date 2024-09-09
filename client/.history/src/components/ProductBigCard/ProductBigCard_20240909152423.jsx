@@ -160,7 +160,7 @@ export default function ProductBigCard({ product }) {
                                 {product?.totalReviews > 0
                                     ? `${`⭐`.repeat(
                                           product?.mediaStars?.toFixed(1)
-                                      )}  (
+                                      )} estrellas (
                                 ${product?.totalReviews} reviews)`
                                     : 'Este usuario no tiene reviews'}
                             </h3>
