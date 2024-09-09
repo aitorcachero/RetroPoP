@@ -24,6 +24,7 @@ export default function ProfilePage() {
     const [previewUrl, setPreviewUrl] = useState(''); // Almacena la url de la previsualiza
     const navigate = useNavigate();
 
+    console.log(authUser);
     // Efecto para actualizar estados cuando cambia el usuario.
     useEffect(() => {
         if (authUser) {

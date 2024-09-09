@@ -133,7 +133,7 @@ export const AuthProvider = ({ children }) => {
 
             // Realiza la solicitud para actualizar el perfil del usuario utilizando editUserService
             const response = await editUserService(authToken, updatedProfile);
-
+            console.log(response);
             if (response.status === 'ok') {
                 // Actualiza el usuario en el estado
                 setAuthUser({ ...authUser, ...updatedProfile });
@@ -142,7 +142,6 @@ export const AuthProvider = ({ children }) => {
                 const update = { ...authUser };
                 update.bio = response.data.bio;
                 update.avatar = response.data.avatar;
-                setAuthUser(update);
             } else {
                 toastError('Error al actualizar el perfil ');
             }
