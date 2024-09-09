@@ -193,7 +193,7 @@ export default function ProfilePage() {
                             {showPopUp && (
                                 <div
                                     className="popup
-                                w-[330px] bg-slate-900 flex flex-col p-10 gap-4 md:w-[600px] border border-slate-600"
+                                w-[350px] bg-slate-900 flex flex-col p-10 gap-4 md:w-[600px] border border-slate-600"
                                 >
                                     <p className="popup-p text-white font-bold">
                                         ¿Estás de que quieres eliminar tu
