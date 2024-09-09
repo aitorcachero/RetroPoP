@@ -189,7 +189,7 @@ export default function LoginPage() {
 
                     <div className="form-wrapper sign-in  bg-slate-900 border border-slate-600 text-white">
                         <form action="" onSubmit={LoginSubmit}>
-                            <h2 className="text-white">Login</h2>
+                            <h2>Login</h2>
                             <div className="input-group md:w-[320px] w-[220px]">
                                 <input type="text" required />
 
@@ -217,9 +217,7 @@ export default function LoginPage() {
                                 <label htmlFor="">Contraseña</label>
                             </div>
                             <div className="forgot-pass">
-                                <a href="#" className="">
-                                    ¿Has olvidado la contraseña?
-                                </a>
+                                <a href="#">¿Has olvidado la contraseña?</a>
                             </div>
                             <button type="submit" className="btn">
                                 Entra

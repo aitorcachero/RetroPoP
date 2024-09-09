@@ -40,7 +40,7 @@ export default function ValidateUserPage() {
                         setAuthToken(token);
                         localStorage.setItem(userLocalStorageKey, token);
                         navigate('/');
-                    }, 5000);
+                    }, 3000);
                 };
 
                 if (token) {
@@ -56,8 +56,8 @@ export default function ValidateUserPage() {
     }, [navigate, regCodeParam, setAuthToken]);
 
     return (
-        <div className="container-main w-full">
-            <div className="container-main__content m-10 bg-slate-900 border border-slate-600 rounded-lg p-10">
+        <div className="container-main">
+            <div className="container-main__content">
                 {loading ? (
                     <Loader />
                 ) : (

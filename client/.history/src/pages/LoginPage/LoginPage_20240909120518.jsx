@@ -115,9 +115,9 @@ export default function LoginPage() {
         <>
             <div className="container-login">
                 <div className="wrapper mt-40 relative w-[350px] h-[500px] md:w-[500px] md:h-[500px]">
-                    <div className="form-wrapper sign-up bg-slate-900 border border-slate-600 text-white">
+                    <div className="form-wrapper sign-up bg-slate-900 text-white">
                         <form action="" onSubmit={registerSubmit}>
-                            <h2 className="text-white">Registro</h2>
+                            <h2>Registro</h2>
                             <div className="input-group md:w-[320px] w-[220px]">
                                 <input type="text" required />
                                 <label htmlFor="">Usuario</label>
@@ -187,9 +187,9 @@ export default function LoginPage() {
                         </form>
                     </div>
 
-                    <div className="form-wrapper sign-in  bg-slate-900 border border-slate-600 text-white">
+                    <div className="form-wrapper sign-in">
                         <form action="" onSubmit={LoginSubmit}>
-                            <h2 className="text-white">Login</h2>
+                            <h2>Login</h2>
                             <div className="input-group md:w-[320px] w-[220px]">
                                 <input type="text" required />
 
@@ -217,9 +217,7 @@ export default function LoginPage() {
                                 <label htmlFor="">Contraseña</label>
                             </div>
                             <div className="forgot-pass">
-                                <a href="#" className="">
-                                    ¿Has olvidado la contraseña?
-                                </a>
+                                <a href="#">¿Has olvidado la contraseña?</a>
                             </div>
                             <button type="submit" className="btn">
                                 Entra

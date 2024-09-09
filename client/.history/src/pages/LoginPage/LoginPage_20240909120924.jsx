@@ -217,7 +217,7 @@ export default function LoginPage() {
                                 <label htmlFor="">Contraseña</label>
                             </div>
                             <div className="forgot-pass">
-                                <a href="#" className="">
+                                <a href="#" className="text-white">
                                     ¿Has olvidado la contraseña?
                                 </a>
                             </div>

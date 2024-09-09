@@ -217,9 +217,7 @@ export default function LoginPage() {
                                 <label htmlFor="">Contraseña</label>
                             </div>
                             <div className="forgot-pass">
-                                <a href="#" className="">
-                                    ¿Has olvidado la contraseña?
-                                </a>
+                                <a href="#">¿Has olvidado la contraseña?</a>
                             </div>
                             <button type="submit" className="btn">
                                 Entra

@@ -57,7 +57,7 @@ export default function ValidateUserPage() {
 
     return (
         <div className="container-main w-full">
-            <div className="container-main__content m-10 bg-slate-900 border border-slate-600 rounded-lg p-10">
+            <div className="container-main__content m-10 bg-slate-900 p-10">
                 {loading ? (
                     <Loader />
                 ) : (
