@@ -14,7 +14,7 @@ export default function FilteredPage() {
 
     const navigate = useNavigate();
     const name = useLocation().search;
-
+    console.log(name);
     const query = name.split('=').at(-1);
 
     const filterDefault = {
@@ -80,6 +80,8 @@ export default function FilteredPage() {
     }, [name]);
 
     useEffect(() => {
+        console.log(filters);
+        console.log(products);
         if (products) {
             const filtersProducts = [...products].filter(
                 (product) =>
@@ -185,7 +187,7 @@ export default function FilteredPage() {
                                             onChange={handleUpdateStateValue}
                                         >
                                             <option value="all" defaultValue>
-                                                Cualquier estado
+                                                Selecciona estado
                                             </option>
                                             {productsState.map((v, i) => (
                                                 <option key={i} value={v}>

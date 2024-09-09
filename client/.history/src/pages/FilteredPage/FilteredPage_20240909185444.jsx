@@ -14,7 +14,6 @@ export default function FilteredPage() {
 
     const navigate = useNavigate();
     const name = useLocation().search;
-
     const query = name.split('=').at(-1);
 
     const filterDefault = {
@@ -27,7 +26,7 @@ export default function FilteredPage() {
 
     const [products, setProducts] = useState();
     const [filters, setFilters] = useState({
-        categoria: name,
+        categoria: useLocation().search,
         actualPrice: 0,
         precioMax: 0,
         estado: 'all',
@@ -80,6 +79,8 @@ export default function FilteredPage() {
     }, [name]);
 
     useEffect(() => {
+        console.log(filters);
+        console.log(products);
         if (products) {
             const filtersProducts = [...products].filter(
                 (product) =>
@@ -118,9 +119,9 @@ export default function FilteredPage() {
         navigate(`/product/${id}`);
     };
 
-    const handleUpdateCategory = (e) => {
-        navigate(`/search/?category=${e.target.value}`);
-    };
+    const handleUpdateCategory = (e) = {
+        navigate(`/search/?category=${e.target.value}`)
+    }
 
     return (
         <>
@@ -137,10 +138,12 @@ export default function FilteredPage() {
                                     <select
                                         name="select"
                                         className="select-category w-full bg-slate-800 text-white border border-slate-600"
-                                        onChange={handleUpdateCategory}
+                                        onChange={(e) =>
+                                            handleUpdateCategory
+                                        }
                                     >
                                         <option value="" defaultValue>
-                                            Todas las categorías
+                                            Selecciona categoría
                                         </option>
                                         {categorys.map((v, i) => (
                                             <option
@@ -185,7 +188,7 @@ export default function FilteredPage() {
                                             onChange={handleUpdateStateValue}
                                         >
                                             <option value="all" defaultValue>
-                                                Cualquier estado
+                                                Selecciona estado
                                             </option>
                                             {productsState.map((v, i) => (
                                                 <option key={i} value={v}>

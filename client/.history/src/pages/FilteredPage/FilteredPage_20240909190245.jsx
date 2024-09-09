@@ -14,7 +14,7 @@ export default function FilteredPage() {
 
     const navigate = useNavigate();
     const name = useLocation().search;
-
+    console.log(name);
     const query = name.split('=').at(-1);
 
     const filterDefault = {

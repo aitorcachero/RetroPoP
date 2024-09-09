@@ -118,7 +118,7 @@ const categorys = [
     },
     {
         value: 'Camaras de fotos',
-        selectedValue: 'Camaras%20de%20fotos',
+        selectedValue: 'camaras',
     },
     {
         value: 'Consolas',
