@@ -1,40 +1,40 @@
 import LateralBar from '../../components/LateralBar/LateralBar';
+import ProductCard from '../../components/ProductCard/ProductCard';
 import { useEffect, useState } from 'react';
 import { getAllProductsService } from '../../services/fetchData';
 import useAuth from '../../hooks/useAuth';
 import { NavLink, useNavigate } from 'react-router-dom';
-import './ProductsActivePage.css';
-import ProductCardProfile from '../../components/ProductCardProfile/ProductCardProfile';
 import Loader from '../../components/Loader/Loader';
 import { profileBarStyle } from '../../utils/const';
 
 export default function ProductsActivePage() {
-    const { authUser, loading, setLoading } = useAuth();
+    const { authFavs } = useAuth();
 
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState();
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        setLoading(true);
-        const fetchProducts = async () => {
-            try {
-                const body = await getAllProductsService();
-                setProducts(
-                    body.data.filter(
-                        (product) =>
-                            product.isSelled === 0 &&
-                            product.userId === authUser?.id
-                    )
-                );
-            } catch (err) {
-                console.log(err.message);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchProducts();
-    }, []);
+        if (authFavs) {
+            setLoading(true);
+            const fetchProducts = async () => {
+                try {
+                    const body = await getAllProductsService();
+                    setProducts(
+                        body?.data?.filter((product) =>
+                            authFavs?.includes(product.id)
+                        )
+                    );
+                } catch (err) {
+                    console.log(err.message);
+                } finally {
+                    setLoading(false);
+                }
+            };
+            fetchProducts();
+        }
+    }, [authFavs]);
 
     const handleCardClick = async (e, key) => {
         e.preventDefault();
@@ -42,13 +42,13 @@ export default function ProductsActivePage() {
     };
 
     return (
-        <section className="list-products-active flex flex-col  justify-center items-center w-full">
+        <section className="list-products-active flex flex-col justify-center items-center w-full">
             <LateralBar />
 
-            <h2 className={profileBarStyle}>Productos en venta</h2>
+            <h2 className={profileBarStyle}>Favoritos</h2>
 
             <div className="list-products__container-active w-full">
-                <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center mb-20 md:p-10">
+                <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center mb-20 md:p-20">
                     {products &&
                         products.map((product) => (
                             <li
@@ -57,22 +57,27 @@ export default function ProductsActivePage() {
                                     handleCardClick(event, product.id)
                                 }
                             >
-                                <ProductCardProfile
+                                <ProductCard
                                     productName={product.productName}
                                     price={product.price}
                                     image={product.image}
+                                    fav={
+                                        authFavs?.includes(product.id)
+                                            ? true
+                                            : false
+                                    }
                                 />
                             </li>
                         ))}
                     {loading && <Loader />}
-                    {products.length === 0 && !loading && (
+                    {products && products.length === 0 && !loading && (
                         <div className="flex flex-col justify-center items-center w-[350px] md:w-[800px] shadow-xl shadow-black bg-slate-900 border border-slate-600 p-6 ">
                             <h2 className="text-white md:text-xl  p-6 rounded-lg  text-center">
-                                No tienes ningún producto a la venta en RetroPoP
+                                No tienes ningún producto guardado en favoritos
                             </h2>
                             <div className="w-full flex justify-center items-center">
                                 <NavLink
-                                    to="/upload"
+                                    to="/search"
                                     className="w-full md:w-auto"
                                 >
                                     <button
@@ -80,7 +85,7 @@ export default function ProductsActivePage() {
                                         style={{ cursor: 'pointer' }}
                                     >
                                         <p className="  font-bold">
-                                            SUBIR PRODUCTO
+                                            BUSCAR PRODUCTOS
                                         </p>
                                     </button>
                                 </NavLink>
