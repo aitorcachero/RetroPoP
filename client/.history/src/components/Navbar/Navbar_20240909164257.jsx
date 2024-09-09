@@ -63,27 +63,23 @@ const Navbar = () => {
                     placeholder="Busca tu producto aquí..."
                     onKeyDown={handleSubmitSearch}
                 />
-                {authUser && (
-                    <NavLink
-                        to="/upload"
-                        className={`md:w-[230px] md:h-[60px]  `}
+
+                <NavLink to="/upload" className={`md:w-[230px] md:h-[60px]  `}>
+                    <button
+                        className={`upload-product md:w-[230px] md:h-[60px] p-2 text-xs md:text-lg shadow-xl shadow-black border border-slate-500 ${
+                            !loading ? 'flex' : 'hidden'
+                        }`}
+                        style={{ cursor: 'pointer' }}
                     >
-                        <button
-                            className={`upload-product md:w-[230px] md:h-[60px] p-2 text-xs md:text-lg shadow-xl shadow-black border border-slate-500 ${
-                                !loading ? 'flex' : 'hidden'
-                            }`}
-                            style={{ cursor: 'pointer' }}
-                        >
-                            <img
-                                src="/icons/add-product.png"
-                                alt=""
-                                className={`w-8 md:w-12 `}
-                                loading="lazy"
-                            />{' '}
-                            <p className="hidden md:block">Subir producto</p>
-                        </button>
-                    </NavLink>
-                )}
+                        <img
+                            src="/icons/add-product.png"
+                            alt=""
+                            className={`w-8 md:w-12 `}
+                            loading="lazy"
+                        />{' '}
+                        <p className="hidden md:block">Subir producto</p>
+                    </button>
+                </NavLink>
 
                 {!loading &&
                     (!authUser ? (
