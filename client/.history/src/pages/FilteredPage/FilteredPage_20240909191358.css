@@ -95,7 +95,7 @@ input[type='range']::-webkit-slider-runnable-track {
     cursor: pointer;
     animate: 0.2s;
 
-    background: #1e293b;
+    background: #0e162a;
     border-radius: 10px;
     border: 1px solid #475569;
 }
