@@ -133,25 +133,23 @@ export default function ProductBigCard({ product }) {
                                     </button>
                                 )}
                             {showPopUpDelete && (
-                                <div className="popup  bg-slate-950 border border-slate-600 text-white w-[330px] md:w-auto flex flex-col md:p-10 gap-4">
+                                <div className="popup bg-slate-800 text-white">
                                     <p className="popup-p">
                                         ¿Estás segur@ de que quieres eliminar
                                         este producto?
                                     </p>
-                                    <div className="flex flex-row gap-4">
-                                        <button
-                                            onClick={confirmDelete}
-                                            className={buttonStyle}
-                                        >
-                                            Confirmar
-                                        </button>
-                                        <button
-                                            onClick={cancelDelete}
-                                            className={buttonStyle}
-                                        >
-                                            Cancelar
-                                        </button>
-                                    </div>
+                                    <button
+                                        onClick={confirmDelete}
+                                        className="popup-button"
+                                    >
+                                        Confirmar
+                                    </button>
+                                    <button
+                                        onClick={cancelDelete}
+                                        className="popup-button"
+                                    >
+                                        Cancelar
+                                    </button>
                                 </div>
                             )}
                         </div>
@@ -220,7 +218,7 @@ export default function ProductBigCard({ product }) {
                                 </button>
                             )}
                         {showPopUp && (
-                            <div className="popup  bg-slate-950 border border-slate-600 text-white w-[330px] md:w-auto flex flex-col md:p-10 gap-4">
+                            <div className="popup flex flex-col  bg-slate-900 border border-slate-600 text-white gap-4 p-10 font-bold">
                                 <p className="popup-p">
                                     ¿Estás segur@ de que quieres reservar este
                                     producto?

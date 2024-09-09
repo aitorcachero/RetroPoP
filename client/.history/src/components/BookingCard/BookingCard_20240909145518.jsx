@@ -82,7 +82,7 @@ export default function BookingCard({ booking }) {
                             Aceptar
                         </button>
                         {showModal && (
-                            <div className="popup-booking bg-slate-900 border border-slate-600  ">
+                            <div className="popup-booking bg-slate-900 border border-slate-600">
                                 <h2 className="text-white text-xl font-bold">
                                     Datos de la entrega
                                 </h2>
