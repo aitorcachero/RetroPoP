@@ -28,6 +28,7 @@ import Footer from './components/Footer/Footer';
 import ProductEditPage from './pages/ProductEditPage/ProductEditPage';
 import UploadImages from './pages/UploadImages/UploadImages';
 import useAuth from './hooks/useAuth';
+import useAuth from './hooks/useAuth';
 
 const App = () => {
     const { authUser } = useAuth();

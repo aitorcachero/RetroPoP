@@ -27,10 +27,8 @@ import FavsPage from './pages/FavsPage/FavsPage';
 import Footer from './components/Footer/Footer';
 import ProductEditPage from './pages/ProductEditPage/ProductEditPage';
 import UploadImages from './pages/UploadImages/UploadImages';
-import useAuth from './hooks/useAuth';
 
 const App = () => {
-    const { authUser } = useAuth();
     return (
         <>
             <ToastContainer
