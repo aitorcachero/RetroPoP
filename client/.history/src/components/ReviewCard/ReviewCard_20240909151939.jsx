@@ -73,7 +73,7 @@ export default function ReviewCard({ image, productName, resno }) {
                         <h3 className="review-card__name">{productName}</h3>
                         <input
                             type="text"
-                            className="review-title w-full rounded-xl text-base p-2 bg-slate-800 border border-slate-600 text-slate-300"
+                            className="review-title w-full rounded-xl text-base p-2 bg-slate-800 border border-slate-600 text-white"
                             placeholder="Titulo de la reseña"
                         />
 
@@ -83,7 +83,7 @@ export default function ReviewCard({ image, productName, resno }) {
                         />
 
                         <select
-                            className="stars-select w-full rounded-xl text-base p-2 bg-slate-800 border border-slate-600 text-slate-300"
+                            className="stars-select w-full rounded-xl text-base p-2 bg-slate-800 border border-slate-600 text-white"
                             name="stars"
                             id="stars"
                         >
