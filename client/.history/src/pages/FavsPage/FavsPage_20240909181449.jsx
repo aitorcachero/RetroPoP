@@ -8,33 +8,30 @@ import Loader from '../../components/Loader/Loader';
 import { profileBarStyle } from '../../utils/const';
 
 export default function ProductsActivePage() {
-    const { authFavs } = useAuth();
+    const { authFavs, loading, setLoading } = useAuth();
 
-    const [products, setProducts] = useState();
-    const [loading, setLoading] = useState(false);
+    const [products, setProducts] = useState([]);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (authFavs) {
-            setLoading(true);
-            const fetchProducts = async () => {
-                try {
-                    const body = await getAllProductsService();
-                    setProducts(
-                        body?.data?.filter((product) =>
-                            authFavs?.includes(product.id)
-                        )
-                    );
-                } catch (err) {
-                    console.log(err.message);
-                } finally {
-                    setLoading(false);
-                }
-            };
-            fetchProducts();
-        }
-    }, [authFavs]);
+        setLoading(true);
+        const fetchProducts = async () => {
+            try {
+                const body = await getAllProductsService();
+                setProducts(
+                    body.data.filter((product) => {
+                        authFavs?.includes(product.id);
+                    })
+                );
+            } catch (err) {
+                console.log(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchProducts();
+    }, []);
 
     const handleCardClick = async (e, key) => {
         e.preventDefault();
@@ -70,7 +67,7 @@ export default function ProductsActivePage() {
                             </li>
                         ))}
                     {loading && <Loader />}
-                    {products && products.length === 0 && !loading && (
+                    {products.length === 0 && !loading && (
                         <div className="flex flex-col justify-center items-center w-[350px] md:w-[800px] shadow-xl shadow-black bg-slate-900 border border-slate-600 p-6 ">
                             <h2 className="text-white md:text-xl  p-6 rounded-lg  text-center">
                                 No tienes ningún producto guardado en favoritos

@@ -20,12 +20,14 @@ export default function ProductsActivePage() {
             setLoading(true);
             const fetchProducts = async () => {
                 try {
+                    console.log('entra');
                     const body = await getAllProductsService();
                     setProducts(
                         body?.data?.filter((product) =>
                             authFavs?.includes(product.id)
                         )
                     );
+                    console.log('entra2', products);
                 } catch (err) {
                     console.log(err.message);
                 } finally {

@@ -28,6 +28,7 @@ export default function ProductBigCard({ product }) {
     const navigate = useNavigate();
 
     useEffect(() => {
+        console.log(au);
         if (authFavs && product.id) {
             authFavs?.includes(product?.id) ? setFav(true) : setFav(false);
         }
@@ -66,10 +67,16 @@ export default function ProductBigCard({ product }) {
         toast.success(setFavorite.message);
 
         if (authFavs.includes(product.id)) {
-            setAuthFavs(authFavs.filter((x) => x !== product.id));
+            const updateFavs = authFavs.filter((x) => x !== product.id);
+            setAuthFavs(updateFavs);
         } else {
-            setAuthFavs([...authFavs].concat(product.id));
         }
+
+        const updateUserFavs = authFavs.includes(product.id)
+            ? [...authFavs].filter((x) => x !== product.id)
+            : [...authFavs].push(product.id);
+
+        setAuthFavs(updateUserFavs);
 
         setFav(!fav);
     };

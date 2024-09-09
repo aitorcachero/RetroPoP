@@ -66,9 +66,13 @@ export default function ProductBigCard({ product }) {
         toast.success(setFavorite.message);
 
         if (authFavs.includes(product.id)) {
-            setAuthFavs(authFavs.filter((x) => x !== product.id));
+            const updateFavs = authFavs.filter((x) => x !== product.id);
+            console.log(updateFavs);
+            setAuthFavs(updateFavs);
         } else {
-            setAuthFavs([...authFavs].concat(product.id));
+            const updateFavs = [...authFavs].push(product.id);
+            console.log(updateFavs);
+            setAuthFavs(updateFavs);
         }
 
         setFav(!fav);

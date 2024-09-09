@@ -28,9 +28,7 @@ export default function ProductBigCard({ product }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (authFavs && product.id) {
-            authFavs?.includes(product?.id) ? setFav(true) : setFav(false);
-        }
+        authFavs?.includes(product?.id) ? setFav(true) : setFav(false);
     }, [authFavs, product?.id]);
 
     const handleBookingCreate = async (e) => {
@@ -65,11 +63,11 @@ export default function ProductBigCard({ product }) {
 
         toast.success(setFavorite.message);
 
-        if (authFavs.includes(product.id)) {
-            setAuthFavs(authFavs.filter((x) => x !== product.id));
-        } else {
-            setAuthFavs([...authFavs].concat(product.id));
-        }
+        const updateUserFavs = [...authFavs];
+        updateUserFavs.includes(product?.id)
+            ? updateUserFavs.filter((x) => x !== product.id)
+            : updateUserFavs.push(product.id);
+        setAuthFavs(updateUserFavs);
 
         setFav(!fav);
     };

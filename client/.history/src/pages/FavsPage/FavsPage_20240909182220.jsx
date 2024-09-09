@@ -8,10 +8,9 @@ import Loader from '../../components/Loader/Loader';
 import { profileBarStyle } from '../../utils/const';
 
 export default function ProductsActivePage() {
-    const { authFavs } = useAuth();
+    const { authFavs, loading, setLoading } = useAuth();
 
     const [products, setProducts] = useState();
-    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -20,12 +19,14 @@ export default function ProductsActivePage() {
             setLoading(true);
             const fetchProducts = async () => {
                 try {
+                    console.log('entra');
                     const body = await getAllProductsService();
                     setProducts(
                         body?.data?.filter((product) =>
                             authFavs?.includes(product.id)
                         )
                     );
+                    console.log('entra2', products);
                 } catch (err) {
                     console.log(err.message);
                 } finally {
