@@ -30,6 +30,7 @@ export default function ListProducts() {
                             product.userId !== authUser?.id
                     )
                 );
+                console.log(products);
                 setFavs(authFavs);
             } catch (err) {
                 console.log(err.message);

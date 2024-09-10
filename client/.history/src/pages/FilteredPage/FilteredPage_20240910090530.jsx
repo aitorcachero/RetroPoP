@@ -124,7 +124,7 @@ export default function FilteredPage() {
                 {filteredProducts && (
                     <>
                         <aside className="   p-4 -mt-10 md:-mt-0 md:p-0 md:w-[500px] flex flex-col justify-start items-center">
-                            <form className="flex flex-col justify-center items-center rounded-xl bg-slate-900 border border-slate-600  md:ml-6  md:gap-10 h-auto py-4 gap-4 w-[350px] md:w-[500px]">
+                            <form className="flex flex-col justify-center items-center rounded-xl bg-transparent border border-slate-600  md:ml-6  md:gap-10 h-auto py-4 gap-4 w-[350px] md:w-[500px] backdrop:blur-lg">
                                 <section className="container-aside__section_category gap-1 md:gap-4">
                                     <h3 className="filter-h3 text-lg font-bold md:text-3xl">
                                         Categorias

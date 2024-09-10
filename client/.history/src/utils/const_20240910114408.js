@@ -167,7 +167,7 @@ const productsState = [
 ];
 
 const buttonStyle =
-    'relative flex justify-center items-center rounded-lg bg-slate-800 cursor pointer text-white font-bold  md:p-4 border border-slate-600 hover:bg-slate-700 w-full min-h-12';
+    'relative rounded-lg bg-slate-800 cursor pointer text-white font-bold  md:p-4 border border-slate-600 hover:bg-slate-700 w-full min-h-12';
 
 const profileBarStyle =
     'sticky w-full mb-2 text-center font-extrabold text-3xl md:text-6xl text-slate-300 border-y border-slate-600 bg-slate-900 p-4';

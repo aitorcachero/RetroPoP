@@ -42,6 +42,7 @@ export default function ProfilePage() {
     // Función para actualizar el perfil del usuario.
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
+        if (bio === authUser.bio && previewUrl === '') return;
         setLoading(true);
         // Creación de un objeto FormData para enviar los datos del formulario.
         const formData = new FormData();

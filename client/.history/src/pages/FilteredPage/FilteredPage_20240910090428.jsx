@@ -197,7 +197,7 @@ export default function FilteredPage() {
                                         </h3>
                                         <input
                                             type="text"
-                                            className="outline-none rounded-xl p-2 w-full text-center bg-slate-800 text-white border border-slate-600 "
+                                            className="outline-none rounded-xl p-2 w-full text-center bg-slate-800 text-white border border-slate-600 backdrop:*:blur-lg"
                                             onChange={handleUpdatePlaceValue}
                                         />
                                     </section>

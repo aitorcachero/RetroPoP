@@ -9,7 +9,6 @@ import { Navigate } from 'react-router-dom';
 import { handleAddFilePreview } from '../../utils/handleAddFilePreview.js';
 import LateralBar from '../../components/LateralBar/LateralBar.jsx';
 import { buttonStyle, profileBarStyle } from '../../utils/const.js';
-import LoaderSpinner from '../../components/LoaderSpinner/LoaderSpinner.jsx';
 
 export default function ProfilePage() {
     const fileInputRef = useRef(null);
@@ -191,7 +190,6 @@ export default function ProfilePage() {
                             <button
                                 onClick={handleDeleteUser}
                                 className={buttonStyle}
-                                disabled={loading}
                             >
                                 Borrar perfil
                             </button>
@@ -225,13 +223,9 @@ export default function ProfilePage() {
                                 onClick={handleUpdateProfile}
                                 type="Submit"
                                 className={buttonStyle}
-                                disabled={loading}
+                                disabled={!loading}
                             >
-                                {loading ? (
-                                    <LoaderSpinner />
-                                ) : (
-                                    'Guardar cambios'
-                                )}
+                                Guardar cambios
                             </button>
                         </section>
                     </form>

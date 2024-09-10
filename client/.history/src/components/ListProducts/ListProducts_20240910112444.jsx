@@ -13,7 +13,7 @@ export default function ListProducts() {
     const { authUser, authFavs } = useAuth();
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
-    // const [search, setSearch] = useState('');
+    const [search, setSearch] = useState('');
     const [favs, setFavs] = useState([]);
 
     const navigate = useNavigate();
@@ -30,6 +30,7 @@ export default function ListProducts() {
                             product.userId !== authUser?.id
                     )
                 );
+                console.log(products);
                 setFavs(authFavs);
             } catch (err) {
                 console.log(err.message);
@@ -58,25 +59,31 @@ export default function ListProducts() {
                 </div> */}
                 <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center mb-20 md:p-10">
                     {products &&
-                        products.map((product) => (
-                            <li
-                                key={product.id}
-                                onClick={(event) =>
-                                    handleCardClick(event, product.id)
-                                }
-                            >
-                                <ProductCard
-                                    productName={product.productName}
-                                    price={product.price}
-                                    image={product.image}
-                                    fav={
-                                        authFavs?.includes(product.id)
-                                            ? true
-                                            : false
+                        products
+                            .filter((x) =>
+                                x.productName
+                                    .toLowerCase()
+                                    .includes(search.toLowerCase())
+                            )
+                            .map((product) => (
+                                <li
+                                    key={product.id}
+                                    onClick={(event) =>
+                                        handleCardClick(event, product.id)
                                     }
-                                />
-                            </li>
-                        ))}
+                                >
+                                    <ProductCard
+                                        productName={product.productName}
+                                        price={product.price}
+                                        image={product.image}
+                                        fav={
+                                            authFavs?.includes(product.id)
+                                                ? true
+                                                : false
+                                        }
+                                    />
+                                </li>
+                            ))}
 
                     {loading && <Loader />}
                 </ul>

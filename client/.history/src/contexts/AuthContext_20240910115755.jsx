@@ -134,9 +134,8 @@ export const AuthProvider = ({ children }) => {
 
                 toastSuccess('Perfil actualizado con éxito');
                 const update = { ...authUser };
-
-                if (response.data.bio) update.bio = response.data.bio;
-                if (response.data.avatar) update.avatar = response.data.avatar;
+                if (update.bio) update.bio = response.data.bio;
+                if (update.avatar) update.avatar = response.data.avatar;
                 setAuthUser(update);
             } else {
                 toastError('Error al actualizar el perfil ');

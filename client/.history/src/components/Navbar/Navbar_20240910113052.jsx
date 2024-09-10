@@ -59,7 +59,7 @@ const Navbar = () => {
 
                 <input
                     type="text"
-                    className="search-form md:w-1/2 w-48 h-12 md:h-14 bg-slate-800 opacity-60 border border-slate-600 backdrop-blur-md"
+                    className="search-form md:w-1/2 w-48 h-12 md:h-14 bg-slate-800 border border-slate-600 backdrop-blur-md"
                     placeholder="Busca tu producto aquí..."
                     onKeyDown={handleSubmitSearch}
                 />

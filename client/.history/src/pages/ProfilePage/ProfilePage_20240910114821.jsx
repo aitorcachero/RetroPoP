@@ -39,6 +39,8 @@ export default function ProfilePage() {
     // Si el usuario no está logeado redirigimos a la página principal.
     if (!authUser) return <Navigate to="/" />;
 
+    console.log(previewUrl);
+
     // Función para actualizar el perfil del usuario.
     const handleUpdateProfile = async (e) => {
         e.preventDefault();

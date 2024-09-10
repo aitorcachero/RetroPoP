@@ -23,7 +23,7 @@ export default function ProfilePage() {
     const [avatar, setAvatar] = useState(null); // Inicializa el avatar como nulo.
     const [img, setImg] = useState(avatar); // Inicializa el estado para la imagen como cadena vacía.
     const [showPopUp, setShowPopUp] = useState(false); // Inicializa el estado para mostrar el popup como falso.
-    const [previewUrl, setPreviewUrl] = useState(''); // Almacena la url de la previsualiza
+    const [previewUrl, setPreviewUrl] = useState(); // Almacena la url de la previsualiza
     const navigate = useNavigate();
 
     // Efecto para actualizar estados cuando cambia el usuario.

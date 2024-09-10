@@ -9,7 +9,6 @@ import { Navigate } from 'react-router-dom';
 import { handleAddFilePreview } from '../../utils/handleAddFilePreview.js';
 import LateralBar from '../../components/LateralBar/LateralBar.jsx';
 import { buttonStyle, profileBarStyle } from '../../utils/const.js';
-import LoaderSpinner from '../../components/LoaderSpinner/LoaderSpinner.jsx';
 
 export default function ProfilePage() {
     const fileInputRef = useRef(null);
@@ -42,7 +41,7 @@ export default function ProfilePage() {
     // Función para actualizar el perfil del usuario.
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
-        setLoading(true);
+
         // Creación de un objeto FormData para enviar los datos del formulario.
         const formData = new FormData();
         formData.append('bio', bio);
@@ -61,8 +60,6 @@ export default function ProfilePage() {
             // updateProfile.bio = bio;
         } catch (error) {
             toast.error('Error al actualizar el perfil');
-        } finally {
-            setLoading(false);
         }
     };
 
@@ -191,7 +188,6 @@ export default function ProfilePage() {
                             <button
                                 onClick={handleDeleteUser}
                                 className={buttonStyle}
-                                disabled={loading}
                             >
                                 Borrar perfil
                             </button>
@@ -225,13 +221,8 @@ export default function ProfilePage() {
                                 onClick={handleUpdateProfile}
                                 type="Submit"
                                 className={buttonStyle}
-                                disabled={loading}
                             >
-                                {loading ? (
-                                    <LoaderSpinner />
-                                ) : (
-                                    'Guardar cambios'
-                                )}
+                                Guardar cambios
                             </button>
                         </section>
                     </form>

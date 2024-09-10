@@ -27,9 +27,8 @@
     border-radius: 10px;
     outline: none;
     text-align: center;
-    background-color: #ffffff2c;
-    backdrop-filter: blur(10px);
-    /* opacity: 0; */
+    /* background-color: #ffffff2c; */
+    opacity: 0;
     color: white;
 }
 

@@ -59,7 +59,7 @@ const Navbar = () => {
 
                 <input
                     type="text"
-                    className="search-form md:w-1/2 w-48 h-12 md:h-14 bg-slate-800 opacity-60 border border-slate-600 backdrop-blur-md"
+                    className="search-form md:w-1/2 w-48 h-12 md:h-14 bg-transparent backdrop-blur-md"
                     placeholder="Busca tu producto aquí..."
                     onKeyDown={handleSubmitSearch}
                 />
@@ -88,7 +88,7 @@ const Navbar = () => {
                 {!loading &&
                     (!authUser ? (
                         <img
-                            className="user w-12 h-12 md:w-14 md:h-14 "
+                            className="user w-12 h-12 md:w-14 md:h-14"
                             src="/icons/login.png"
                             onClick={handleClickLogin}
                             loading="lazy"
@@ -97,7 +97,7 @@ const Navbar = () => {
                         <div>
                             <img
                                 onClick={handleClickAvatar}
-                                className={`user w-12 h-12 md:w-14 md:h-14 border-2 border-slate-600`}
+                                className="user w-12 h-12 md:w-14 md:h-14"
                                 src={
                                     authUser.avatar
                                         ? `${APIUrl}/avatars/${authUser.avatar}`

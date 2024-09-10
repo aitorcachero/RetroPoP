@@ -23,7 +23,7 @@ export default function ProfilePage() {
     const [avatar, setAvatar] = useState(null); // Inicializa el avatar como nulo.
     const [img, setImg] = useState(avatar); // Inicializa el estado para la imagen como cadena vacía.
     const [showPopUp, setShowPopUp] = useState(false); // Inicializa el estado para mostrar el popup como falso.
-    const [previewUrl, setPreviewUrl] = useState(''); // Almacena la url de la previsualiza
+    const [previewUrl, setPreviewUrl] = useState(); // Almacena la url de la previsualiza
     const navigate = useNavigate();
 
     // Efecto para actualizar estados cuando cambia el usuario.
@@ -42,6 +42,7 @@ export default function ProfilePage() {
     // Función para actualizar el perfil del usuario.
     const handleUpdateProfile = async (e) => {
         e.preventDefault();
+        if (bio === authUser.bio && previewUrl === '') return;
         setLoading(true);
         // Creación de un objeto FormData para enviar los datos del formulario.
         const formData = new FormData();

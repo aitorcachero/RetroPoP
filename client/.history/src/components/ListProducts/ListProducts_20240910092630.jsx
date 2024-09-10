@@ -13,7 +13,7 @@ export default function ListProducts() {
     const { authUser, authFavs } = useAuth();
     const [loading, setLoading] = useState(false);
     const [products, setProducts] = useState([]);
-    // const [search, setSearch] = useState('');
+    const [search, setSearch] = [''];
     const [favs, setFavs] = useState([]);
 
     const navigate = useNavigate();
@@ -24,6 +24,13 @@ export default function ListProducts() {
             try {
                 const body = await getAllProductsService();
                 setProducts(
+                    body.data.filter(
+                        (product) =>
+                            product.isSelled === 0 &&
+                            product.userId !== authUser?.id
+                    )
+                );
+                setSearchProducts(
                     body.data.filter(
                         (product) =>
                             product.isSelled === 0 &&
@@ -48,14 +55,13 @@ export default function ListProducts() {
     return (
         <section className="list-products">
             <div className="list-products__container w-full flex flex-col justify-center items-center">
-                {/* <div className="w-[600px]    z-50">
+                <div className="w-[600px]    z-50">
                     <input
                         type="text"
                         className="w-full outline-none border border-slate-600 rounded-lg p-2 text-center bg-transparent backdrop-blur-md text-white"
-                        value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                </div> */}
+                </div>
                 <ul className="flex flex-1 flex-wrap gap-20 justify-center items-center mb-20 md:p-10">
                     {products &&
                         products.map((product) => (
