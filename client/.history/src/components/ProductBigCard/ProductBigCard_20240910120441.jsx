@@ -114,7 +114,7 @@ export default function ProductBigCard({ product }) {
 
     return (
         <div className="product-big-card p-4">
-            <article className="product-page   my-4 md:min-w-[800px] bg-slate-900 shadow-xl shadow-black border border-slate-600 mb-10">
+            <article className="product-page   my-4 md:min-w-[800px] bg-slate-900 shadow-xl shadow-black border border-slate-600 mb-20">
                 <header className="w-full bg-slate-800 p-4">
                     <div className="product-page__header__user">
                         <div className="product-page__header__user__name">
