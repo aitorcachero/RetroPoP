@@ -63,17 +63,12 @@ const Navbar = () => {
                 onKeyDown={handleSubmitSearch}
             />
 
-            <NavLink
-                to="/upload"
-                className={`md:w-[230px] md:h-[60px] opacity-${
-                    !authUser ? 0 : 100
-                }  `}
-            >
+            <NavLink to="/upload" className={`md:w-[230px] md:h-[60px] opacity-0 ${!authUser :} `}>
                 <button
                     className={`upload-product md:w-[230px] md:h-[60px] p-2 text-xs md:text-lg shadow-xl shadow-black border border-slate-500 ${
                         !loading ? 'flex' : 'hidden'
                     }`}
-                    disabled={!authUser}
+                    style={{ cursor: 'pointer' }}
                 >
                     <img
                         src="/icons/add-product.png"

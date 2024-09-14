@@ -73,6 +73,7 @@ const Navbar = () => {
                     className={`upload-product md:w-[230px] md:h-[60px] p-2 text-xs md:text-lg shadow-xl shadow-black border border-slate-500 ${
                         !loading ? 'flex' : 'hidden'
                     }`}
+                    style={{ cursor: 'pointer' }}
                     disabled={!authUser}
                 >
                     <img
