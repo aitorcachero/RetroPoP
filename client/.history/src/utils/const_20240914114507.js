@@ -10,12 +10,12 @@ const categoryNav = [
         alt: 'camaras',
     },
     {
-        path: '/search/?category=Consolas',
+        path: '/search/?category=consolas',
         img: '/icons/consolas.png',
         alt: 'consolas',
     },
     {
-        path: '/search/?category=Juguetes',
+        path: '/search/?category=juguetes',
         img: '/icons/juguetes.png',
         alt: 'juguetes',
     },

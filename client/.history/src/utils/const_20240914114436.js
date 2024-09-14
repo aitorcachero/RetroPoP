@@ -1,21 +1,21 @@
 const categoryNav = [
     {
-        path: '/search/?category=Audio',
-        img: '/icons/audio.png',
+        path: '/search/?category=audio',
+        img: '/icons/Audio.png',
         alt: 'audio',
     },
     {
-        path: '/search/?category=Camaras%20de%20fotos',
+        path: '/search/?category=camaras',
         img: '/icons/camaras.png',
         alt: 'camaras',
     },
     {
-        path: '/search/?category=Consolas',
+        path: '/search/?category=consolas',
         img: '/icons/consolas.png',
         alt: 'consolas',
     },
     {
-        path: '/search/?category=Juguetes',
+        path: '/search/?category=juguetes',
         img: '/icons/juguetes.png',
         alt: 'juguetes',
     },
