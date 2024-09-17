@@ -31,7 +31,7 @@ export {
     MYSQL_PASSWORD,
     MYSQL_DATABASE,
     MYSQL_PORT,
-    MYSQL_URI,
+    MYSQL_URI
     SECRET,
     UPLOADS_DIR,
     MJ_USER,

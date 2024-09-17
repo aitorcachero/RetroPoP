@@ -28,7 +28,15 @@ const getDb = async () => {
             await connection.query(`CREATE DATABASE IF NOT EXISTS ${MYSQL_DB}`);
 
             // Creamos el grupo de conexiones.
-            pool = createPool(MYSQL_URI);
+            pool = createPool({
+                connectionLimit: 10,
+                host: MYSQL_HOST,
+                user: MYSQL_USER,
+                password: MYSQL_PASS,
+                port: MYSQL_PORT,
+                database: MYSQL_DB,
+                timezone: 'local',
+            });
         }
 
         // Finalmente, retornamos una conexión libre con la base de datos.
